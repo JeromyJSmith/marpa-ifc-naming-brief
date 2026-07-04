@@ -31,15 +31,13 @@
         <div id="marpaCoin"></div>
       </div>
       <div class="home-hero-copy">
-        <h1 class="marpa-wordmark">MARPA</h1>
-        <div class="kicker">Progress docs</div>
-        <p class="lead">Vectorworks, IFC, georeferencing, cost intelligence, and live pricing reports in one review package.</p>
+        <img class="hero-wordmark" src="assets/marpa-logo.png" alt="MARPA">
       </div>
     </section>
 
     <section class="page compact-page">
       <div class="kicker">Table of contents</div>
-      <h2>Eleven review pages</h2>
+      <h2>MARPA progress docs</h2>
       <p class="lead toc-lead">Each page explains one part of the process: naming, evidence extraction, pipeline flow, georeferencing, IFC value, cost logic, and live report simulation.</p>
       <div class="toc-grid">
         <a class="toc-card dark" href="naming-bridge.html">
@@ -87,15 +85,15 @@
           <h3>Process</h3>
           <p>The working sequence: inventory first, compare exports, name the objects, attach quantities, then enrich IFC and cost workflows.</p>
         </a>
-        <a class="toc-card dark" href="original-progress-memo.html">
+        <a class="toc-card memo-card dark" href="original-progress-memo.html">
           <span>10</span>
-          <h3>Original Progress Memo</h3>
-          <p>The first simple two-page MARPA review memo, preserved as a standalone HTML page for sharing or email drafting.</p>
+          <h3>Two-page progress memo</h3>
+          <p>HTML version of the short MARPA-facing progress memo for quick review or email drafting.</p>
         </a>
-        <a class="toc-card" href="marpa-ifc-naming-progress-memo.pdf">
+        <a class="toc-card memo-card" href="marpa-ifc-naming-progress-memo.pdf">
           <span>11</span>
-          <h3>PDF Memo</h3>
-          <p>A branded PDF version of the IFC naming conventions memo that can be attached directly to an email.</p>
+          <h3>Two-page progress memo PDF</h3>
+          <p>Branded PDF version of the same memo, ready to attach or share directly.</p>
         </a>
       </div>
     </section>
@@ -122,7 +120,7 @@
     if (mount) {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-      camera.position.set(0, 0.12, 5.8);
+      camera.position.set(0, 0.06, 6.2);
       camera.lookAt(0, 0, 0);
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -176,7 +174,7 @@
       function animate() {
         if (!alive) return;
         requestAnimationFrame(animate);
-        pivot.rotation.y += clock.getDelta() * Math.PI * 0.22;
+        pivot.rotation.y += clock.getDelta() * Math.PI * 0.18;
         renderer.render(scene, camera);
       }
 
