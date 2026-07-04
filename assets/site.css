@@ -192,22 +192,24 @@ p {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 28px;
   align-items: start;
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
 .card {
+  min-width: 0;
   background: #ffffff;
   border: 2px solid var(--line);
   border-radius: 18px;
   padding: 24px;
+  overflow-wrap: anywhere;
 }
 
 .card.dark {
@@ -398,6 +400,7 @@ p {
   width: 100%;
   border-collapse: collapse;
   font-size: 20px;
+  table-layout: fixed;
 }
 
 .matrix th {
@@ -412,6 +415,7 @@ p {
   border: 1px solid var(--line);
   padding: 16px;
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .matrix tr:nth-child(even) td {
@@ -453,11 +457,13 @@ p {
 }
 
 .big-node {
+  min-width: 0;
   background: #ffffff;
   border: 3px solid var(--line);
   border-left: 12px solid var(--marpa-red);
   border-radius: 20px;
   padding: 26px 30px;
+  overflow-wrap: anywhere;
 }
 
 .big-node.dark {
@@ -503,12 +509,12 @@ p {
 
 .big-branch {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
 .big-branch.two {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .big-branch .big-node {
@@ -602,17 +608,19 @@ p {
 
 .georef-check-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 18px;
   margin-top: 32px;
 }
 
 .georef-check-card {
+  min-width: 0;
   background: #ffffff;
   border: 2px solid var(--line);
   border-left: 10px solid var(--marpa-red);
   border-radius: 18px;
   padding: 24px 28px;
+  overflow-wrap: anywhere;
 }
 
 .georef-check-card strong {
