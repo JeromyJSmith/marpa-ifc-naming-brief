@@ -27,35 +27,106 @@
   <main class="shell">
     <section class="page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
-      <div class="kicker">Project coordinates</div>
-      <h1>Without georeferencing, the project loses its real-world position</h1>
+      <div class="kicker">Geo-referenced platform</div>
+      <h1>Georeferencing is the foundation for spatial design intelligence</h1>
       <div class="rule"></div>
-      <p class="lead">A project origin, Cartesian coordinate system, and site georeference are not just survey details. They are what let design geometry line up with real space, other exports, maps, measurements, and future projects.</p>
+      <p class="lead">A project needs a verified coordinate reference system, True North, parcel identity, elevation reference, and IFC map conversion before cost, shadow, wildfire, watershed, and regulatory checks can be trusted.</p>
     </section>
 
     <section class="page georef-reading-page">
-      <div class="kicker">Design value</div>
-      <h1>Location makes the model useful before estimating even starts</h1>
+      <div class="kicker">Ground truth stack</div>
+      <h1>The coordinate stack has multiple anchors, not one point on a map</h1>
+      <div class="geo-stack">
+        <div class="geo-stack-card red">
+          <strong>WGS84 latitude / longitude</strong>
+          <span>GPS, web maps, GeoJSON, and IFC site reference.</span>
+        </div>
+        <div class="geo-stack-card">
+          <strong>NAD83 / UTM Zone 13N</strong>
+          <span>Denver-Boulder survey and GIS work; useful statewide reference for many Colorado datasets.</span>
+        </div>
+        <div class="geo-stack-card">
+          <strong>Colorado State Plane</strong>
+          <span>North, Central, and South zones for county GIS, survey, and legal description alignment.</span>
+        </div>
+        <div class="geo-stack-card">
+          <strong>Cartesian project origin</strong>
+          <span>The Vectorworks/BIM internal origin tied back to the real-world coordinate reference.</span>
+        </div>
+        <div class="geo-stack-card">
+          <strong>NAVD88 elevation</strong>
+          <span>Orthometric height for grading, drainage, floodplain, and watershed analysis.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page georef-reading-page">
+      <div class="kicker">North matters</div>
+      <h1>Shadow studies require True North, not an assumed drawing direction</h1>
       <div class="georef-benefit-grid">
         <div class="big-node red georef-readable-card">
           <h3>Seasonal shadow studies</h3>
-          <p>With true project location, north, date, and time, Vectorworks can simulate sunlight and shadows across seasons. That helps MARPA see shade, heat, comfort, plant performance, view impacts, and solar exposure while the design is still moving.</p>
+          <p>With true location, date, time, and north rotation, Vectorworks can simulate sunlight and shadows across seasons. That lets MARPA see shade, heat, comfort, plant performance, view impacts, and solar exposure while the design is still flexible.</p>
         </div>
         <div class="big-node georef-readable-card">
-          <h3>3D planting decisions</h3>
-          <p>If trees and plants become 3D objects, they can cast shadows, show mature canopy, reveal spatial conflicts, and connect plant identity to cost, risk, maintenance, and site performance.</p>
+          <h3>True North vs. Magnetic North vs. Grid North</h3>
+          <p>True North supports solar studies and surveys. Magnetic North drifts. Grid North is a mapping convenience. Treating them as interchangeable corrupts sun angle, shadow direction, and downstream environmental analysis.</p>
         </div>
         <div class="big-node dark georef-readable-card">
-          <h3>Project liability context</h3>
-          <p>If the project does not know where it is on earth, it cannot reliably know its wildfire area, municipal rules, setbacks, slope behavior, climate exposure, or site-specific design constraints.</p>
+          <h3>3D planting decisions</h3>
+          <p>Once trees and plants become 3D objects, MARPA can evaluate mature canopy, shadows, spatial conflicts, species risk, maintenance context, and cost impact from the same object model.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page georef-reading-page">
+      <div class="kicker">IFC georeference</div>
+      <h1>The enriched IFC needs map conversion, not just object names</h1>
+      <div class="big-diagram">
+        <div class="big-node red georef-readable-card">
+          <h3>IfcProjectedCRS</h3>
+          <p>Stores the coordinate reference system so downstream GIS, civil, and BIM tools know what coordinate language the model is using.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node georef-readable-card">
+          <h3>IfcMapConversion</h3>
+          <p>Connects the local project origin to real-world coordinates using eastings, northings, elevation, rotation, and scale.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node dark georef-readable-card">
+          <h3>Federated model</h3>
+          <p>IFC, DWG/DXF, PDF geometry, GIS layers, survey, imagery, utilities, and civil references can align instead of landing at 0,0,0 or needing manual repositioning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page georef-reading-page">
+      <div class="kicker">Legal parcel identity</div>
+      <h1>The project also needs to know which legal property it belongs to</h1>
+      <div class="georef-check-grid">
+        <div class="georef-check-card">
+          <strong>APN / assessor identity</strong>
+          <p>Links the project to tax records, zoning, permit history, county GIS, and jurisdiction-specific review context.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>PLSS and recorded plat</strong>
+          <p>Township, range, section, quarter-section, plat book, and recorded references anchor the design to legal land description.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>Address and place identity</strong>
+          <p>USPS/CASS, county address, and Google Place ID help reconcile the postal address with the legal and mapped parcel.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>Control points</strong>
+          <p>Survey monuments or four-point control keep the model from drifting against parcel boundaries, imagery, and site measurements.</p>
         </div>
       </div>
     </section>
 
     <section class="page georef-reading-page">
       <div class="kicker">Colorado wildfire context</div>
-      <h1>Georeferencing turns code changes into spatial design checks</h1>
-      <p class="lead">The July 1, 2026 shift matters because Colorado jurisdictions are implementing wildfire-resiliency requirements around WUI mapping, defensible space, structure hardening, and local plant restrictions. A project needs location before the system can know which rules apply.</p>
+      <h1>Location turns code changes into spatial design checks</h1>
+      <p class="lead">Colorado's wildfire-resiliency work is spatial: WUI area, fire intensity, defensible space, plant rules, and material requirements depend on where the project is and what jurisdiction controls the parcel.</p>
 
       <div class="big-diagram">
         <div class="big-node red georef-readable-card">
@@ -65,7 +136,7 @@
         <div class="big-arrow">↓</div>
         <div class="big-node georef-readable-card">
           <h3>Create structure ignition zones</h3>
-          <p>Generate 0-5 ft, 5-30 ft, and 30-100 ft zones around buildings, decks, stairs, attachments, detached structures, fences, and retaining walls.</p>
+          <p>Generate 0-5 ft, 5-30 ft, and 30-100 ft zones around buildings, decks, stairs, attachments, detached structures, fences, retaining walls, and other objects.</p>
         </div>
         <div class="big-arrow">↓</div>
         <div class="big-node georef-readable-card">
@@ -81,124 +152,78 @@
     </section>
 
     <section class="page georef-reading-page">
-      <div class="kicker">What the pipeline can flag</div>
-      <h1>These checks only work when the project has coordinates and 3D objects</h1>
+      <div class="kicker">Platform capabilities</div>
+      <h1>Once the project is anchored, the model can reason spatially</h1>
+      <div class="geo-capability-list">
+        <div><strong>Cost estimation</strong><span>Location-specific labor, material, transportation, vendor, and market factors.</span></div>
+        <div><strong>Solar and shadow</strong><span>Seasonal sun path, mature tree canopy, shade, heat, and view impact.</span></div>
+        <div><strong>Wildfire compliance</strong><span>WUI mapping, fire intensity, defensible-space zones, and plant/material distance checks.</span></div>
+        <div><strong>Watershed and flood risk</strong><span>HUC watershed, FEMA flood zones, post-fire runoff, debris flow, and drainage context.</span></div>
+        <div><strong>IFC federation</strong><span>Survey, GIS, civil, Vectorworks, IFC, PDF, and imagery in one spatial frame.</span></div>
+        <div><strong>AI regulatory scout</strong><span>Parcel-aware alerts for code changes, drought restrictions, fire events, flood warnings, and permit deadlines.</span></div>
+      </div>
+    </section>
 
-      <div class="georef-check-grid">
-        <div class="georef-check-card">
-          <strong>0-5 ft immediate zone</strong>
-          <p>Noncombustible hard surface materials, no new trees, plantings and combustible mulch checked against the building perimeter.</p>
+    <section class="page georef-reading-page">
+      <div class="kicker">Pydantic model</div>
+      <h1>The data model has two states: anchored or risk surface</h1>
+      <div class="geo-model-tree">
+        <div class="geo-model-card red">
+          <h3>GeoReferencedProject</h3>
+          <p>SiteAddress, ParcelIdentity, LatLon, UTMCoordinate, StatePlaneCoordinate, CartesianProjectOrigin, CRSDefinition, IFCGeoreference, ControlPoints, ElevationProfile, SolarAnalysis, WildfireRisk, WatershedAnalysis, ClimateExposure, ColoradoLandscapeLaw, RegulatoryAgentAlert[]</p>
         </div>
-        <div class="georef-check-card">
-          <strong>5-30 ft intermediate zone</strong>
-          <p>Tree crowns, shrub groups, dead material, combustible accumulations, firewood, and species restrictions checked by distance.</p>
-        </div>
-        <div class="georef-check-card">
-          <strong>30-100 ft extended zone</strong>
-          <p>Tree spacing, slope, canopy continuity, and fuel behavior reviewed against site conditions.</p>
-        </div>
-        <div class="georef-check-card">
-          <strong>Plant species awareness</strong>
-          <p>MARPA plant names can connect to botanical names, local restrictions, flammability guidance, cost, size, and mature geometry.</p>
-        </div>
-        <div class="georef-check-card">
-          <strong>Shadow and canopy impact</strong>
-          <p>Seasonal sun studies can show where trees, walls, buildings, and structures shade patios, plant beds, windows, turf, and outdoor rooms.</p>
-        </div>
-        <div class="georef-check-card">
-          <strong>Collision and clash review</strong>
-          <p>Objects can be checked against structures, roofs, chimneys, utilities, property lines, easements, access paths, and design zones.</p>
+        <div class="big-arrow">↓</div>
+        <div class="geo-model-card dark">
+          <h3>UnreferencedProject</h3>
+          <p>MissingGeoRefData plus GeoRefRiskSurface: cost risk, solar risk, wildfire risk, BIM federation risk, watershed risk, legal/permit risk, and regulatory-monitoring risk.</p>
         </div>
       </div>
     </section>
 
-    <section class="page diagram-page">
-      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
-      <div class="kicker">Downstream impact</div>
-      <h1>Georeferencing turns exported drawings into a reusable project model</h1>
-      <div class="rule"></div>
-      <p class="lead">The goal is not to make Vectorworks more complicated. The goal is to make every downstream file line up so MARPA can automate takeoff, enrichment, pricing, review, and writeback.</p>
-
-      <div class="big-diagram">
-        <div class="big-node red">
-          <h3>Project origin + coordinate system</h3>
-          <p>Units, rotation, elevation, site reference, and project origin become the shared spatial anchor.</p>
-        </div>
-        <div class="big-arrow">↓</div>
-        <div class="big-node">
-          <h3>Export alignment</h3>
-          <p>PDF sheets, DWG/DXF geometry, IFC exports, rendered images, worksheets, and design-layer evidence can line up against the same coordinate frame.</p>
-        </div>
-        <div class="big-arrow">↓</div>
-        <div class="big-node">
-          <h3>Object reconstruction</h3>
-          <p>Hardscapes, plants, walls, materials, and plan objects can be rebuilt as spatial design objects instead of isolated drawing marks.</p>
-        </div>
-        <div class="big-arrow">↓</div>
-        <div class="big-branch two">
-          <div class="big-node">
-            <h3>Quantity takeoff</h3>
-            <p>Area, length, count, volume, zone, slope, phase, and location can be calculated from aligned geometry.</p>
-          </div>
-          <div class="big-node">
-            <h3>IFC enrichment</h3>
-            <p>Entities and property sets carry spatial context, source evidence, object identity, and cost-relevant quantities.</p>
-          </div>
-        </div>
-        <div class="big-arrow">↓</div>
-        <div class="big-node dark">
-          <h3>Cost-aware digital twin</h3>
-          <p>3D review, map review, dashboard review, predictive cost analysis, and Vectorworks import all work from the same spatial project state.</p>
-        </div>
-      </div>
-
-      <div class="outcome">
-        Georeferencing makes the project reusable:
-        <span>source evidence</span>
-        ↔
-        <span>spatial BIM</span>
-        ↔
-        <span>quantity takeoff</span>
-        ↔
-        <span>predictive cost analysis</span>
+    <section class="page georef-reading-page">
+      <div class="kicker">Risk surface</div>
+      <h1>Without georeferencing, errors compound silently</h1>
+      <div class="geo-compare-list">
+        <div><strong>Cost</strong><span>Wrong market, labor, material, freight, and subcontractor assumptions.</span></div>
+        <div><strong>Solar</strong><span>Wrong latitude or north rotation creates invalid shadow and solar exposure analysis.</span></div>
+        <div><strong>Wildfire</strong><span>WUI zone, fire intensity, defensible space, and plant checks cannot be determined.</span></div>
+        <div><strong>IFC</strong><span>Models cannot reliably federate with GIS, survey, civil files, or site imagery.</span></div>
+        <div><strong>Legal</strong><span>Parcel, APN, PLSS, easement, floodplain, and jurisdiction checks become manual or missing.</span></div>
+        <div><strong>Regulatory alerts</strong><span>AI monitoring becomes broad, noisy, and low-precision instead of parcel-aware.</span></div>
       </div>
     </section>
 
     <section class="page compact-page">
       <div class="kicker">Research notes</div>
       <h2>Why this matters now</h2>
-      <table class="matrix">
-        <thead>
-          <tr>
-            <th>Finding</th>
-            <th>Why georeferencing helps</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Vectorworks solar studies use location, date, time, and north orientation to show sunlight and shadows.</td>
-            <td>The project needs true position and orientation for reliable seasonal shadow simulation.</td>
-          </tr>
-          <tr>
-            <td>Colorado wildfire guidance organizes defensible space around structures into 0-5 ft, 5-30 ft, and 30-100 ft zones.</td>
-            <td>Those zones are geometry problems: draw buffers around structures, then test objects and materials inside them.</td>
-          </tr>
-          <tr>
-            <td>Jefferson County's Wildfire Resiliency Code is effective July 1, 2026 for permits on or after that date, and includes specific site requirements.</td>
-            <td>The system can map a project to jurisdiction, date, WUI area, and applicable local code language.</td>
-          </tr>
-          <tr>
-            <td>Local jurisdictions can name prohibited or discouraged plants. Jefferson County lists juniper species, arborvitae, and Gambel oak; Louisville prohibits new juniper plantings; Boulder recommends removing junipers.</td>
-            <td>Plant objects need botanical identity and location so the model can show possible conflicts before plans are finalized.</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="geo-source-notes">
+        <div>
+          <strong>Vectorworks solar studies</strong>
+          <p>Solar analysis depends on location, date, time, and north orientation; this is the design case for true georeferencing and 3D vegetation.</p>
+        </div>
+        <div>
+          <strong>Colorado defensible-space zones</strong>
+          <p>Colorado wildfire guidance organizes mitigation around 0-5 ft, 5-30 ft, and 30-100 ft structure ignition zones.</p>
+        </div>
+        <div>
+          <strong>2025 Colorado Wildfire Resiliency Code</strong>
+          <p>Public implementation summaries describe local adoption by April 1, 2026 and compliance/enforcement timing by July 1, 2026 for WUI jurisdictions.</p>
+        </div>
+        <div>
+          <strong>Colorado turf and plant laws</strong>
+          <p>SB24-005 and HB25-1113 make turf, artificial turf, invasive plants, and property type important spatial and jurisdictional checks.</p>
+        </div>
+      </div>
 
       <div class="source-links">
         <a href="https://app-help.vectorworks.net/2026/eng/VW2026_Guide/SolarStudies/Solar_studies.htm">Vectorworks solar studies</a>
-        <a href="https://csfs.colostate.edu/wildfire-mitigation/protect-your-home-property-from-wildfire/">Colorado State Forest Service defensible space zones</a>
-        <a href="https://www.jeffco.us/DocumentCenter/View/57852/Jefferson-County-Colorado-Wildfire-Resiliency-Code-PDF?bidId=">Jefferson County Wildfire Resiliency Code</a>
-        <a href="https://content.govdelivery.com/accounts/COLOUISVILLE/bulletins/40585ee">Louisville juniper planting notice</a>
+        <a href="https://csfs.colostate.edu/wildfire-mitigation/protect-your-home-property-from-wildfire/">Colorado State Forest Service defensible space</a>
+        <a href="https://www.cml.org/home/publications-news/article-detail/colorado-wildfire-resiliency-code-update">Colorado Municipal League CWRC update</a>
+        <a href="https://www.broomfieldvoice.com/2025-colorado-wildfire-resiliency-code">Broomfield CWRC summary</a>
+        <a href="https://leg.colorado.gov/bills/hb25-1113">Colorado HB25-1113</a>
+        <a href="https://dre.colorado.gov/hb25-1113-summary">Colorado Division of Real Estate HB25-1113 summary</a>
+        <a href="https://www.northernwater.org/news/SB5">Northern Water SB24-005 summary</a>
+        <a href="https://content.govdelivery.com/accounts/COLOUISVILLE/bulletins/40585ee">Louisville juniper notice</a>
         <a href="https://bouldercolorado.gov/wildfire-resilient-landscapes-guide">Boulder wildfire resilient landscapes guide</a>
       </div>
     </section>

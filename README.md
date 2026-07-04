@@ -15,5 +15,5 @@ Pages:
 - `georeferencing.html` — project origin, Cartesian coordinates, and downstream georeferencing value
 - `cost-formulas.html` — workbook, worksheet, and formula evidence for cost analysis
 - `predictive-pricing.html` — interactive scenario sliders and live report value demo
-Last Pages refresh: 2026-07-04 live report app simulation.
+Last Pages refresh: 2026-07-04 geo-referenced platform page.
 Diagram refresh: large vertical HTML diagrams.
