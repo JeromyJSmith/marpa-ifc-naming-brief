@@ -5,28 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MARPA Pipeline Diagrams</title>
   <link rel="stylesheet" href="assets/site.css">
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      flowchart: {
-        nodeSpacing: 48,
-        rankSpacing: 54,
-        curve: "basis"
-      },
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#fff5f3",
-        primaryTextColor: "#111111",
-        primaryBorderColor: "#d94b3f",
-        lineColor: "#a93630",
-        secondaryColor: "#ffffff",
-        tertiaryColor: "#f4f0ed",
-        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif",
-        fontSize: "22px"
-      }
-    });
-  </script>
 </head>
 <body>
   <header class="topbar">
@@ -50,103 +28,270 @@
     <section class="page diagram-page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
       <div class="kicker">Pipeline diagrams</div>
-      <h1>The design is the data pipeline</h1>
+      <h1>Large-format data pipeline maps</h1>
       <div class="rule"></div>
-      <p class="lead">These diagrams show how we move from one Vectorworks design state into source evidence packages, MARPA naming, IFC enrichment, cost analysis, review, and Vectorworks writeback.</p>
-
-      <div class="mermaid-card">
-        <h3>End-to-end architecture</h3>
-        <pre class="mermaid">
-flowchart TB
-  VW["Vectorworks project file\nVWX + active design state"] --> MCP["MCP / Vectorworks scripting\ninspect + export"]
-  MCP --> EXPORTS["Export package\nPDF • DWG/DXF • IFC variants • worksheets • images"]
-  EXPORTS --> DOCS["Document separation\ntext • tables • figures • layout • images"]
-  EXPORTS --> GEOM["Geometry extraction\n2D linework • IFC entities • vector paths"]
-  EXPORTS --> SHEETS["Worksheet/formula evidence\nquantities • rates • categories"]
-  DOCS --> PACKAGE["Normalized evidence package\nJSON + files + receipts"]
-  GEOM --> PACKAGE
-  SHEETS --> PACKAGE
-  PACKAGE --> NAME["MARPA naming bridge\nstable object identity"]
-  NAME --> IFC["IFC enrichment\nentities • property sets • quantities"]
-  NAME --> COST["Cost model\ncodes • quantities • pricing • risk"]
-  IFC --> REVIEW["Marimo / dashboard review\ninspect • adjust • compare"]
-  COST --> REVIEW
-  REVIEW --> WRITEBACK["Vectorworks writeback\nenriched IFC + receipts"]
-  WRITEBACK --> VW
-        </pre>
+      <p class="lead">These diagrams are intentionally long and vertical. They are meant to be read on screen during a conversation, not squeezed into a single horizontal technical chart.</p>
+      <div class="diagram-jump">
+        <a href="#pipeline-flow">Pipeline flow</a>
+        <a href="#evidence-package">Evidence package</a>
+        <a href="#parallel-work">Parallel work</a>
       </div>
     </section>
 
-    <section class="page diagram-page">
+    <section id="pipeline-flow" class="page diagram-page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
-      <div class="kicker">Evidence package</div>
-      <h1>What one extracted project package contains</h1>
+      <div class="kicker">Diagram 1</div>
+      <h1>Pipeline flow from Vectorworks to useful project intelligence</h1>
       <div class="rule"></div>
-      <p class="lead">The package keeps the original exports and adds normalized objects that describe pages, text, images, Vectorworks identity, quantities, classifications, and source lineage.</p>
-      <div class="mermaid-card">
-        <h3>Evidence package structure</h3>
-        <pre class="mermaid">
-flowchart TB
-  ROOT["ExtractedSourcePackage"] --> PROJECT["MarpaProject\nproject code • job number"]
-  ROOT --> ARTIFACT["ExportArtifact\nfile hash • export settings • source path"]
-  ROOT --> PAGE["ExtractedPage\nsheet number • scale • page image"]
-  PAGE --> TEXT["PdfTextSpan\nlabels • notes • dimensions"]
-  PAGE --> PATHS["PdfVectorPath\nlinework • symbols • possible geometry"]
-  PAGE --> IMG["ExtractedImageAsset\nrendered views • plant images • sheet images"]
-  ROOT --> VWOBJ["VectorworksObjectIdentity\nlayer • class • record • resource"]
-  ROOT --> CANDIDATE["ObjectCandidate\nhardscape • plant • wall • material"]
-  CANDIDATE --> QTY["QuantityEvidence\ncount • area • length • volume • unit"]
-  CANDIDATE --> CLASS["ClassificationCandidate\nCSI • MARPA category • IFC entity"]
-  CANDIDATE --> LINEAGE["SourceLineage\nwhich file/page/tool produced the fact"]
-        </pre>
+      <p class="lead">The system starts with one design state, gathers every useful export, then builds one evidence package that can support IFC, cost analysis, reporting, and Vectorworks writeback.</p>
+
+      <div class="big-diagram">
+        <div class="big-node red">
+          <h3>1. Same project / same design state</h3>
+          <p>Open the current Vectorworks project and tie the whole harvest to that exact file state, active export settings, units, layers, sheets, and project context.</p>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-node">
+          <h3>2. Vectorworks MCP and scripting harvest</h3>
+          <p>Read document settings, layers, classes, records, worksheets, resources, symbols, plant records, and export capabilities directly from Vectorworks.</p>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-branch">
+          <div class="big-node">
+            <h3>PDF / document exports</h3>
+            <p>Sheets, annotations, text, page geometry, images, plans, and human-facing report content.</p>
+          </div>
+          <div class="big-node">
+            <h3>DWG / DXF / image exports</h3>
+            <p>Hardscape linework, design-layer geometry, sheet images, rendered views, scale, and visual grouping.</p>
+          </div>
+          <div class="big-node">
+            <h3>IFC / worksheet exports</h3>
+            <p>Entity candidates, property coverage, schedules, quantities, cost rows, and formula evidence.</p>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-node dark">
+          <h3>3. Normalize into one source evidence package</h3>
+          <p>Every extracted fact keeps its source file, page, layer, worksheet, object name, export settings, and extraction receipt.</p>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-node">
+          <h3>4. Build MARPA naming and classification bridge</h3>
+          <p>Original Vectorworks names stay preserved. MARPA adds stable object identity, canonical category, quantity basis, IFC mapping, and cost classification.</p>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-branch">
+          <div class="big-node">
+            <h3>IFC enrichment</h3>
+            <p>Attach entities, property sets, quantities, source lineage, and MARPA object identity.</p>
+          </div>
+          <div class="big-node">
+            <h3>Predictive pricing</h3>
+            <p>Use object-level quantities, workbook formulas, historical costs, market factors, and estimate ranges.</p>
+          </div>
+          <div class="big-node">
+            <h3>Review surface</h3>
+            <p>Show live Marimo reports, dashboards, 3D review, and scenario sliders for project decisions.</p>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-node red">
+          <h3>5. Write useful information back into Vectorworks</h3>
+          <p>Enriched IFC and receipts make Vectorworks more useful on the next project: better objects, better schedules, better search, and better cost analysis.</p>
+        </div>
       </div>
     </section>
 
-    <section class="page diagram-page">
+    <section id="evidence-package" class="page diagram-page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
-      <div class="kicker">Naming bridge</div>
-      <h1>How names become useful downstream</h1>
+      <div class="kicker">Diagram 2</div>
+      <h1>Evidence package structure</h1>
       <div class="rule"></div>
-      <p class="lead">Vectorworks names stay preserved, MARPA adds stable object identity, and that identity carries IFC, quantity, and cost meaning into the rest of the workflow.</p>
-      <div class="mermaid-card">
-        <h3>Naming bridge</h3>
-        <pre class="mermaid">
-flowchart TB
-  A["Vectorworks names\nlayers • classes • records • worksheets"] --> B["MARPA canonical object model\nstable object id"]
-  B --> C["IFC mapping\nentity • property set • classification"]
-  B --> D["Cost / quantity taxonomy\nunit • rate • takeoff basis"]
-  C --> E["Enriched IFC\nportable BIM data"]
-  D --> F["Estimate model\ncost ranges • risk • scenarios"]
-  E --> G["Vectorworks import\nbetter BIM objects"]
-  F --> H["MARPA review\npricing and scope decisions"]
-        </pre>
+      <p class="lead">The evidence package is the thing we build before final database schemas. It says what was extracted, where it came from, what it might mean, and what still needs comparison.</p>
+
+      <div class="evidence-stack">
+        <div class="evidence-group">
+          <header><h3>Project and export identity</h3></header>
+          <div class="evidence-body">
+            <span class="evidence-token">MarpaProject</span>
+            <div>
+              <p>Project code, job number, client/project name, active Vectorworks file, project state, and export run identity.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">ExportArtifact</span>
+            <div>
+              <p>Each PDF, IFC, DWG/DXF, worksheet, image, and report gets a source path, file hash, export settings, timestamp, and method.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="evidence-group">
+          <header><h3>Document and page extraction</h3></header>
+          <div class="evidence-body">
+            <span class="evidence-token">ExtractedPage</span>
+            <div>
+              <p>Sheet number, page size, render, scale clues, sheet title, and page-level source references.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">PdfTextSpan</span>
+            <div>
+              <p>Labels, dimensions, notes, callouts, schedules, and any text that can help classify objects or quantities.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">ExtractedImageAsset</span>
+            <div>
+              <p>Plan images, plant symbols, rendered sheet views, background-removed assets, and visual segmentation candidates.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="evidence-group">
+          <header><h3>Vectorworks and geometry evidence</h3></header>
+          <div class="evidence-body">
+            <span class="evidence-token">VectorworksObjectIdentity</span>
+            <div>
+              <p>Layer, class, object name, record format, worksheet, resource name, symbol reference, plant record, and document context.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">PdfVectorPath</span>
+            <div>
+              <p>Vector linework, possible object boundaries, text-relative geometry, sheet-space coordinates, and plan symbols.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">GeometryCandidate</span>
+            <div>
+              <p>Hardscape, wall, planting bed, tree, material area, or other spatial object candidate with source confidence.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="evidence-group">
+          <header><h3>Quantity, classification, and cost meaning</h3></header>
+          <div class="evidence-body">
+            <span class="evidence-token">QuantityEvidence</span>
+            <div>
+              <p>Count, area, length, volume, unit, worksheet source, geometry source, and measurement basis.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">ClassificationCandidate</span>
+            <div>
+              <p>MARPA category, IFC entity candidate, property set mapping, cost code, material basis, and estimate group.</p>
+            </div>
+          </div>
+          <div class="evidence-body">
+            <span class="evidence-token">SourceLineage</span>
+            <div>
+              <p>Which file, page, worksheet, object, export, script, or model produced each fact, so the pipeline can explain itself later.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page diagram-page">
+    <section id="parallel-work" class="page diagram-page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
-      <div class="kicker">Parallel work</div>
-      <h1>Which lanes can happen at the same time</h1>
+      <div class="kicker">Diagram 3</div>
+      <h1>Parallel work lanes that converge into the MARPA model</h1>
       <div class="rule"></div>
-      <p class="lead">Several discovery lanes can run in parallel, but they all converge on the MARPA naming and Pydantic model before schema loading or cost modeling.</p>
-      <div class="mermaid-card">
-        <h3>Parallel work lanes</h3>
-        <pre class="mermaid">
-flowchart TB
-  START["Same project / same design state"] --> A["VWX control-file shortlist"]
-  START --> B["Vectorworks MCP harvest"]
-  START --> C["Export matrix"]
-  START --> D["Document/image separation"]
-  START --> E["Workbook and formula extraction"]
-  START --> F["IFC version comparison"]
-  A --> MODEL["MARPA naming + Pydantic model"]
-  B --> MODEL
-  C --> MODEL
-  D --> MODEL
-  E --> MODEL
-  F --> MODEL
-  MODEL --> NEXT["IFC enrichment + cost analysis + review surface"]
-        </pre>
+      <p class="lead">These lanes can move at the same time. They do not become final schemas until the source evidence is understood and the naming bridge is clear.</p>
+
+      <div class="lane-list">
+        <div class="lane">
+          <div class="lane-number">1</div>
+          <div class="lane-card">
+            <h3>Project control-file shortlist</h3>
+            <p>Separate current project VWX files from backups, libraries, templates, samples, and platform/tooling files.</p>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-number">2</div>
+          <div class="lane-card">
+            <h3>Vectorworks MCP harvest</h3>
+            <p>Inspect the active document: layers, classes, records, worksheets, resources, symbols, plants, units, export settings, and document preferences.</p>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-number">3</div>
+          <div class="lane-card">
+            <h3>Export matrix</h3>
+            <p>Export PDF, DWG/DXF, IFC variants, worksheets, reports, design-layer images, sheet images, and resource evidence from the same design state.</p>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-number">4</div>
+          <div class="lane-card">
+            <h3>Document and image separation</h3>
+            <p>Use document extraction to split pages into text, tables, vector paths, figures, images, layout blocks, and background-removed visual assets.</p>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-number">5</div>
+          <div class="lane-card">
+            <h3>Workbook and formula extraction</h3>
+            <p>Preserve XLSX formulas, schedules, quantities, rates, markup logic, margin assumptions, and report-template fields as source evidence.</p>
+          </div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-number">6</div>
+          <div class="lane-card">
+            <h3>IFC version comparison</h3>
+            <p>Compare IFC 2x3, IFC4, and IFC4x3 exports to see which entities, properties, geometry, and quantities actually survive each path.</p>
+          </div>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-node red">
+          <h3>Convergence point: MARPA naming and Pydantic model</h3>
+          <p>All lanes feed one object identity model: Vectorworks source identity, MARPA canonical name, geometry evidence, quantity evidence, IFC mapping, cost classification, and source lineage.</p>
+        </div>
+
+        <div class="big-arrow">↓</div>
+
+        <div class="big-branch">
+          <div class="big-node">
+            <h3>Normalized database</h3>
+            <p>Only after evidence and naming are understood.</p>
+          </div>
+          <div class="big-node">
+            <h3>Predictive pricing</h3>
+            <p>Object-level costs, ranges, risk, and report values.</p>
+          </div>
+          <div class="big-node">
+            <h3>Vectorworks writeback</h3>
+            <p>Enriched IFC and better project objects.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
