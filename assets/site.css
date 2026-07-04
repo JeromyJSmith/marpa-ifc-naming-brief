@@ -422,18 +422,35 @@ p {
   background: #ffffff;
   border: 2px solid var(--line);
   border-radius: 18px;
-  padding: 24px;
+  padding: 30px;
   margin: 24px 0;
-  overflow-x: auto;
+  overflow: visible;
 }
 
 .mermaid-card h3 {
   margin-bottom: 18px;
+  font-size: 34px;
 }
 
 .mermaid {
-  min-width: 760px;
+  min-width: 0;
+  width: 100%;
   font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  font-size: 22px;
+}
+
+.mermaid svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.diagram-page {
+  min-height: auto;
+}
+
+.diagram-page .lead {
+  max-width: 980px;
 }
 
 .compare {

@@ -9,6 +9,11 @@
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
     mermaid.initialize({
       startOnLoad: true,
+      flowchart: {
+        nodeSpacing: 48,
+        rankSpacing: 54,
+        curve: "basis"
+      },
       theme: "base",
       themeVariables: {
         primaryColor: "#fff5f3",
@@ -17,7 +22,8 @@
         lineColor: "#a93630",
         secondaryColor: "#ffffff",
         tertiaryColor: "#f4f0ed",
-        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
+        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif",
+        fontSize: "22px"
       }
     });
   </script>
@@ -40,7 +46,7 @@
   </header>
 
   <main class="shell">
-    <section class="page">
+    <section class="page diagram-page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
       <div class="kicker">Pipeline diagrams</div>
       <h1>The design is the data pipeline</h1>
@@ -50,7 +56,7 @@
       <div class="mermaid-card">
         <h3>End-to-end architecture</h3>
         <pre class="mermaid">
-flowchart LR
+flowchart TB
   VW["Vectorworks project file\nVWX + active design state"] --> MCP["MCP / Vectorworks scripting\ninspect + export"]
   MCP --> EXPORTS["Export package\nPDF • DWG/DXF • IFC variants • worksheets • images"]
   EXPORTS --> DOCS["Document separation\ntext • tables • figures • layout • images"]
@@ -70,7 +76,12 @@ flowchart LR
       </div>
     </section>
 
-    <section class="page compact-page">
+    <section class="page diagram-page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Evidence package</div>
+      <h1>What one extracted project package contains</h1>
+      <div class="rule"></div>
+      <p class="lead">The package keeps the original exports and adds normalized objects that describe pages, text, images, Vectorworks identity, quantities, classifications, and source lineage.</p>
       <div class="mermaid-card">
         <h3>Evidence package structure</h3>
         <pre class="mermaid">
@@ -88,14 +99,21 @@ flowchart TB
   CANDIDATE --> LINEAGE["SourceLineage\nwhich file/page/tool produced the fact"]
         </pre>
       </div>
+    </section>
 
+    <section class="page diagram-page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Naming bridge</div>
+      <h1>How names become useful downstream</h1>
+      <div class="rule"></div>
+      <p class="lead">Vectorworks names stay preserved, MARPA adds stable object identity, and that identity carries IFC, quantity, and cost meaning into the rest of the workflow.</p>
       <div class="mermaid-card">
         <h3>Naming bridge</h3>
         <pre class="mermaid">
-flowchart LR
-  A["Vectorworks names\nlayers • classes • records • worksheets"] <--> B["MARPA canonical object model\nstable object id"]
-  B <--> C["IFC mapping\nentity • property set • classification"]
-  B <--> D["Cost / quantity taxonomy\nunit • rate • takeoff basis"]
+flowchart TB
+  A["Vectorworks names\nlayers • classes • records • worksheets"] --> B["MARPA canonical object model\nstable object id"]
+  B --> C["IFC mapping\nentity • property set • classification"]
+  B --> D["Cost / quantity taxonomy\nunit • rate • takeoff basis"]
   C --> E["Enriched IFC\nportable BIM data"]
   D --> F["Estimate model\ncost ranges • risk • scenarios"]
   E --> G["Vectorworks import\nbetter BIM objects"]
@@ -104,7 +122,12 @@ flowchart LR
       </div>
     </section>
 
-    <section class="page compact-page">
+    <section class="page diagram-page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Parallel work</div>
+      <h1>Which lanes can happen at the same time</h1>
+      <div class="rule"></div>
+      <p class="lead">Several discovery lanes can run in parallel, but they all converge on the MARPA naming and Pydantic model before schema loading or cost modeling.</p>
       <div class="mermaid-card">
         <h3>Parallel work lanes</h3>
         <pre class="mermaid">
