@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARPA Pipeline Diagram</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Pipeline map</div>
+      <h1>From one design state to connected BIM and cost evidence</h1>
+      <div class="rule"></div>
+      <p class="lead">The first job is to preserve the design state, export every useful representation, compare what each export contains, and only then create the MARPA naming and classification package.</p>
+
+      <div class="pipeline">
+        <div class="pipe-step"><strong>1. Same project / same design state</strong><span>Open the current Vectorworks project file and keep the export run tied to that state.</span></div>
+        <div class="pipe-step"><strong>2. Export every useful format</strong><span>VWX metadata, PDFs, DWG/DXF, IFC versions, worksheets, schedules, resource assets, sheet images, and design-layer images.</span></div>
+        <div class="pipe-step"><strong>3. Parse into evidence packages</strong><span>Separate text, vector paths, images, tables, geometry, quantities, symbols, records, and source receipts.</span></div>
+        <div class="pipe-step"><strong>4. Compare coverage</strong><span>Find what each format contains and misses: object names, layer context, XY, Z, quantities, materials, plant data, costs, and IFC properties.</span></div>
+        <div class="pipe-step"><strong>5. Build MARPA naming bridge</strong><span>Assign stable MARPA object identity while preserving the original Vectorworks naming and source artifact references.</span></div>
+        <div class="pipe-step"><strong>6. Attach downstream meaning</strong><span>Map to IFC entities, property sets, quantities, cost categories, and 3D enrichment targets.</span></div>
+        <div class="pipe-step"><strong>7. Review and write forward</strong><span>Use the resulting package for estimating, dashboards, 3D review, IFC validation, and later Vectorworks writeback.</span></div>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Dependency graph</div>
+      <h2>What depends on what</h2>
+      <div class="dependency">
+        <div class="node red"><strong>Vectorworks</strong><span>source environment</span></div>
+        <div class="node"><strong>MCP / scripting</strong><span>read document state and export</span></div>
+        <div class="node"><strong>Export package</strong><span>PDF, DWG/DXF, IFC, worksheet, image</span></div>
+        <div class="node"><strong>Document separation</strong><span>MinerU, PyMuPDF, OCR, table extraction</span></div>
+        <div class="node"><strong>Geometry parsing</strong><span>DXF, IFC, vector paths, design-layer images</span></div>
+        <div class="node"><strong>Pydantic models</strong><span>normalized evidence packages</span></div>
+        <div class="node red"><strong>MARPA naming bridge</strong><span>stable object identity</span></div>
+        <div class="node"><strong>IFC enrichment</strong><span>entities, property sets, quantities</span></div>
+        <div class="node"><strong>Cost analysis</strong><span>cost codes, estimate groups, pricing evidence</span></div>
+        <div class="node"><strong>Marimo / review</strong><span>interactive notebooks and dashboards</span></div>
+        <div class="node"><strong>Pixeltable later</strong><span>after source packages are understood</span></div>
+        <div class="node red"><strong>Vectorworks writeback</strong><span>enriched IFC and receipts</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARPA IFC Naming Bridge</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand" src="assets/marpa-logo.png" alt="MARPA logo">
+      <div class="kicker">Naming convention layout</div>
+      <h1>Three naming layers, one object identity</h1>
+      <div class="rule"></div>
+      <p class="lead">The bridge keeps Vectorworks naming intact and adds a stable MARPA identity that can carry IFC, quantity, source, and cost meaning downstream.</p>
+
+      <div class="diagram-row">
+        <div class="diagram-col">
+          <h3>Vectorworks source</h3>
+          <ul>
+            <li>project files</li>
+            <li>design layers</li>
+            <li>sheet layers</li>
+            <li>classes and records</li>
+            <li>worksheets and reports</li>
+            <li>resources, symbols, plants</li>
+          </ul>
+        </div>
+        <div class="between">→</div>
+        <div class="diagram-col">
+          <h3>MARPA canonical model</h3>
+          <ul>
+            <li><span class="chip">MarpaProject</span></li>
+            <li><span class="chip">DesignLayerCandidate</span></li>
+            <li><span class="chip">ExportArtifact</span></li>
+            <li><span class="chip">ObjectCandidate</span></li>
+            <li><span class="chip">QuantityEvidence</span></li>
+            <li><span class="chip">ClassificationCandidate</span></li>
+          </ul>
+        </div>
+        <div class="between">→</div>
+        <div class="diagram-col">
+          <h3>IFC / cost output</h3>
+          <ul>
+            <li>IFC entity candidate</li>
+            <li>property set mapping</li>
+            <li>source lineage</li>
+            <li>area, length, count, volume</li>
+            <li>material and plant identity</li>
+            <li>cost code and estimate group</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Examples</div>
+      <h2>How it reads in practice</h2>
+      <div class="grid-3">
+        <div class="card dark">
+          <h3>Hardscape</h3>
+          <span class="chip">Hardscape-Paver-Walk</span>
+          <span class="chip">MARPA-GANNAN-2515-HARDSCAPE-0001</span>
+          <span class="chip">IfcSlab / IfcCovering</span>
+        </div>
+        <div class="card dark">
+          <h3>Plant</h3>
+          <span class="chip">Plant Record / Common Name</span>
+          <span class="chip">MARPA-GANNAN-2515-PLANT-0001</span>
+          <span class="chip">vegetation + quantity</span>
+        </div>
+        <div class="card dark">
+          <h3>Worksheet</h3>
+          <span class="chip">worksheet quantity row</span>
+          <span class="chip">QuantityEvidence</span>
+          <span class="chip">count / area / unit cost</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

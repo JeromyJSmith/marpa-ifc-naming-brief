@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARPA Evidence Harvest</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Evidence harvest</div>
+      <h1>We do not assume one export contains everything</h1>
+      <div class="rule"></div>
+      <p class="lead">Vectorworks is the source environment, but the truth is fragmented across export modes. The harvest step collects all useful representations, then compares them before naming or loading anything.</p>
+
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Likely useful data</th>
+            <th>Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VWX document</td>
+            <td>Layers, classes, records, worksheets, resources, symbols, plant objects, document settings</td>
+            <td>Best source for native design intent and naming.</td>
+          </tr>
+          <tr>
+            <td>PDF sheets</td>
+            <td>Text labels, sheet layout, annotations, page geometry, raster images, possible vector paths</td>
+            <td>Captures what humans actually review and price from.</td>
+          </tr>
+          <tr>
+            <td>DWG / DXF</td>
+            <td>Hardscape geometry, annotation geometry, layers, linework, blocks, scale context</td>
+            <td>Often contains 2D geometry missing from IFC exports.</td>
+          </tr>
+          <tr>
+            <td>IFC 2x3 / IFC4 / IFC4x3</td>
+            <td>Entities, property sets, spatial hierarchy, object relationships, partial geometry</td>
+            <td>Target format for BIM exchange and enrichment.</td>
+          </tr>
+          <tr>
+            <td>Worksheets / reports</td>
+            <td>Counts, areas, plant schedules, material lists, dimensions, estimate references</td>
+            <td>Often the cleanest quantity and schedule evidence.</td>
+          </tr>
+          <tr>
+            <td>Rendered images</td>
+            <td>Sheet views, design-layer views, plant symbols, visual grouping, image assets</td>
+            <td>Useful for segmentation, review, and 3D asset generation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Document separation</div>
+      <h2>PDFs and documents split into parts first</h2>
+      <div class="grid-2">
+        <div class="flow">
+          <div>PDF / DOCX / XLSX / image</div>
+          <div class="arrow">↓</div>
+          <div>extract text, tables, figures, images</div>
+          <div class="arrow">↓</div>
+          <div>separate layout and source references</div>
+          <div class="arrow">↓</div>
+          <div>create a normalized evidence package</div>
+        </div>
+        <div class="benefits">
+          <h2>Candidate tools</h2>
+          <ul>
+            <li>MinerU for document layout, images, tables, Markdown, and JSON.</li>
+            <li>PyMuPDF and pdfplumber for comparison and extraction checks.</li>
+            <li>OCR only when the document is scanned or text extraction is broken.</li>
+            <li>Image segmentation later, after source identity is captured.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

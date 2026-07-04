@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARPA Process</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Process</div>
+      <h1>The sequence is what makes the data reliable</h1>
+      <div class="rule"></div>
+      <p class="lead">We first learn what is actually inside each project file and export. Then we name the objects. Then we create the downstream data products.</p>
+
+      <div class="grid-2">
+        <div class="flow">
+          <div>inventory actual project files</div>
+          <div class="arrow">↓</div>
+          <div>export every useful representation</div>
+          <div class="arrow">↓</div>
+          <div>extract text, geometry, images, tables, quantities</div>
+          <div class="arrow">↓</div>
+          <div>compare coverage across formats</div>
+          <div class="arrow">↓</div>
+          <div>build the naming bridge from real evidence</div>
+          <div class="arrow">↓</div>
+          <div>load, analyze, enrich, and write forward</div>
+        </div>
+        <div class="benefits">
+          <h2>What this prevents</h2>
+          <ul>
+            <li>Guessing table schemas before the source data is known.</li>
+            <li>Losing original Vectorworks naming and context.</li>
+            <li>Assuming IFC contains geometry or quantities that may only exist in DWG, PDF, or worksheets.</li>
+            <li>Building cost analysis on disconnected spreadsheet rows.</li>
+            <li>Creating 3D enrichment without source lineage.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Near-term work</div>
+      <h2>What happens next</h2>
+      <div class="pipeline">
+        <div class="pipe-step"><strong>Project control shortlist</strong><span>Separate current project VWX files from backups, libraries, samples, templates, and tool corpora.</span></div>
+        <div class="pipe-step"><strong>First Vectorworks harvest</strong><span>Open one project, start the MCP server, read layers/classes/worksheets/records/resources, and export all useful formats from one design state.</span></div>
+        <div class="pipe-step"><strong>Evidence package</strong><span>Write a source package containing the export files, extracted text, tables, geometry, images, and receipts.</span></div>
+        <div class="pipe-step"><strong>Naming model draft</strong><span>Create the first Pydantic model for MARPA object identity, Vectorworks bridge fields, IFC mapping, quantity evidence, and cost classification.</span></div>
+        <div class="pipe-step"><strong>Sample enrichment</strong><span>Attach MARPA property sets and quantity/cost fields to a small group of objects, then inspect the enriched IFC round trip.</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
