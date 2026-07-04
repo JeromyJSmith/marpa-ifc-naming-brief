@@ -682,26 +682,36 @@ p {
 
 .evidence-body {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 24px;
-  padding: 24px 26px;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 28px 30px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .evidence-token {
   align-self: start;
   display: inline-block;
+  max-width: 100%;
   width: fit-content;
   background: var(--dark);
   color: #ffffff;
   border-radius: 10px;
-  padding: 8px 12px;
+  padding: 9px 13px;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: clamp(18px, 1.8vw, 24px);
+  font-size: clamp(17px, 1.5vw, 23px);
+  line-height: 1.12;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .evidence-body p,
 .evidence-body li {
-  font-size: clamp(20px, 1.9vw, 27px);
+  font-size: clamp(22px, 2.1vw, 31px);
+  line-height: 1.22;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .lane-list {
