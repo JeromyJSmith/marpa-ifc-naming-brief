@@ -28,34 +28,158 @@
     <section class="page">
       <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
       <div class="kicker">Process</div>
-      <h1>The sequence is what makes the data reliable</h1>
+      <h1>The sequence is what makes the data useful</h1>
       <div class="rule"></div>
-      <p class="lead">We first learn what is actually inside each project file and export. Then we name the objects. Then we create the downstream data products.</p>
+      <p class="lead">The work starts with the actual project files, not a guessed database schema. We inventory one project, extract every useful representation, compare what each format contains, then build the MARPA object model that can drive IFC, cost analysis, reports, and Vectorworks writeback.</p>
 
       <div class="grid-2">
         <div class="flow">
-          <div>inventory actual project files</div>
+          <div>select one project and freeze the design state</div>
           <div class="arrow">↓</div>
-          <div>export every useful representation</div>
+          <div>connect to Vectorworks through MCP and scripting</div>
           <div class="arrow">↓</div>
-          <div>extract text, geometry, images, tables, quantities</div>
+          <div>inventory layers, classes, records, sheets, worksheets, resources, plants, symbols, and site settings</div>
           <div class="arrow">↓</div>
-          <div>compare coverage across formats</div>
+          <div>export every useful representation from the same state</div>
           <div class="arrow">↓</div>
-          <div>build the naming bridge from real evidence</div>
+          <div>extract text, geometry, images, tables, quantities, materials, and references</div>
           <div class="arrow">↓</div>
-          <div>load, analyze, enrich, and write forward</div>
+          <div>compare format coverage and build the MARPA naming bridge</div>
+          <div class="arrow">↓</div>
+          <div>publish analysis-ready evidence, simulate pricing, and write enriched IFC forward</div>
         </div>
         <div class="benefits">
-          <h2>What this prevents</h2>
+          <h2>Why the order matters</h2>
           <ul>
             <li>Guessing table schemas before the source data is known.</li>
             <li>Losing original Vectorworks naming and context.</li>
             <li>Assuming IFC contains geometry or quantities that may only exist in DWG, PDF, or worksheets.</li>
             <li>Building cost analysis on disconnected spreadsheet rows.</li>
             <li>Creating 3D enrichment without source lineage.</li>
+            <li>Sending enriched geometry back to Vectorworks without proof of where each object came from.</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">One-project harvest</div>
+      <h1>First we make a complete evidence package</h1>
+      <p class="lead">For the first pilot, we open one Vectorworks project and collect every representation that may contain design, quantity, price, schedule, or object identity.</p>
+      <div class="pipeline">
+        <div class="pipe-step"><strong>Project control file</strong><span>Separate the current project VWX from backups, libraries, templates, samples, exports, and tool corpora.</span></div>
+        <div class="pipe-step"><strong>MCP snapshot</strong><span>Read document info, units, georeference settings, design layers, sheet layers, classes, record formats, worksheets, resources, viewports, objects, plants, walls, hatches, and textures.</span></div>
+        <div class="pipe-step"><strong>Export package</strong><span>Export IFC variants, DWG/DXF, PDFs, design-layer images, sheet-layer images, worksheets, reports, resource data, plant data, and any available GIS/SHP output.</span></div>
+        <div class="pipe-step"><strong>Document separation</strong><span>Split PDFs and documents into page text, Markdown, tables, figures, embedded images, vector paths, layout blocks, and rendered page images.</span></div>
+        <div class="pipe-step"><strong>Geometry extraction</strong><span>Parse IFC entities, CAD geometry, PDF vector paths, sheet coordinates, hardscape boundaries, planting areas, walls, symbols, and visual segmentation candidates.</span></div>
+        <div class="pipe-step"><strong>Receipts and hashes</strong><span>Every source and derived artifact gets an id, original path, source path, hash, extraction method, timestamp, status, issue list, and resume pointer.</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Evidence package structure</div>
+      <h1>The package keeps the source and the interpretation separate</h1>
+      <div class="grid-2">
+        <div class="benefits">
+          <h2>Raw project evidence</h2>
+          <ul>
+            <li>VWX document metadata and MCP readback.</li>
+            <li>IFC 2x3, IFC4, and IFC4x3 where available.</li>
+            <li>DWG/DXF linework, layers, blocks, scale clues, and annotations.</li>
+            <li>PDF sheets, vector paths, text spans, rendered sheets, and extracted images.</li>
+            <li>Worksheets, schedules, reports, plant records, symbols, materials, and resource assets.</li>
+            <li>Budgets, estimates, catalogs, quotes, spreadsheets, and formula workbooks connected to the same project.</li>
+          </ul>
+        </div>
+        <div class="benefits">
+          <h2>Normalized evidence</h2>
+          <ul>
+            <li>Stable source asset ids and derived artifact ids.</li>
+            <li>Extracted pages, tables, text spans, vector paths, images, masks, and object crops.</li>
+            <li>Object candidates for hardscapes, walls, planting beds, trees, materials, and schedule rows.</li>
+            <li>Quantity evidence: count, area, length, volume, unit, source worksheet, geometry basis, and confidence.</li>
+            <li>Classification candidates: MARPA object type, IFC entity, property set, cost code, material basis, and estimate group.</li>
+            <li>Source lineage linking every fact back to file, page, sheet, worksheet, object, export script, and parser.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Domain split</div>
+      <h1>After extraction, the records split into working domains</h1>
+      <div class="dependency">
+        <div class="node red"><strong>Spatial design</strong><span>objects, layers, geometry, coordinates, IFC candidates</span></div>
+        <div class="node"><strong>Financial cost</strong><span>budgets, estimates, invoices, pricebooks, formulas</span></div>
+        <div class="node"><strong>Plant catalog</strong><span>botanical names, sizes, images, symbols, pricing candidates</span></div>
+        <div class="node"><strong>Project execution</strong><span>manifests, receipts, schedules, decisions, resume state</span></div>
+        <div class="node"><strong>Modeling analytics</strong><span>features, comparable projects, ranges, risk, uncertainty</span></div>
+        <div class="node red"><strong>Writeback</strong><span>enriched IFC, MCP operations, verification receipts</span></div>
+      </div>
+      <p class="lead">The split lets each kind of evidence keep its own rules while still joining through stable source ids, project ids, object ids, geometry ids, and cost ids.</p>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Normalization</div>
+      <h1>The MARPA naming bridge connects the pieces</h1>
+      <div class="big-diagram">
+        <div class="big-node dark">
+          <h3>Vectorworks source language</h3>
+          <p>Names, classes, layers, record formats, worksheet names, resource names, symbols, plant records, sheet labels, and object handles.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>MARPA canonical object model</h3>
+          <p>Project, source asset, design layer, sheet layer, object candidate, geometry candidate, plant candidate, hardscape candidate, material candidate, quantity evidence, and source lineage.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>IFC and property sets</h3>
+          <p>IfcSite, IfcSlab, IfcWall, proxy objects, MARPA identity fields, Vectorworks bridge fields, geometry basis, quantity takeoff, cost accounting, estimation, and georeference context.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node red">
+          <h3>Cost and reporting meaning</h3>
+          <p>CSI/cost classification, estimate group, material basis, unit cost, quantity basis, pricing source, confidence, scenario values, report fields, and writeback target.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Analysis and cockpit</div>
+      <h1>Then the database supports live estimating and reports</h1>
+      <div class="grid-2">
+        <div class="benefits">
+          <h2>Modeling work</h2>
+          <ul>
+            <li>Normalize quantities, units, materials, plant names, and location factors.</li>
+            <li>Attach historical project costs and comparable-project context.</li>
+            <li>Run deterministic cost models first, then regression and uncertainty analysis where the evidence supports it.</li>
+            <li>Track estimate ranges, low/high values, confidence, and model diagnostics.</li>
+            <li>Keep formulas from MARPA workbooks visible so the report values can be explained.</li>
+          </ul>
+        </div>
+        <div class="benefits">
+          <h2>Marimo cockpit</h2>
+          <ul>
+            <li>Project tabs load the current evidence package and analysis-ready outputs.</li>
+            <li>Sliders adjust markup, labor, material, vendor, risk, contingency, location, and schedule assumptions.</li>
+            <li>MARPA report templates populate in real time from normalized data.</li>
+            <li>Each scenario writes a decision record and keeps source/product versions attached.</li>
+            <li>The selected scenario becomes the writeback package for IFC and Vectorworks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Write forward</div>
+      <h1>The end of the process returns better data to Vectorworks</h1>
+      <div class="pipeline">
+        <div class="pipe-step"><strong>Choose scenario</strong><span>The Marimo cockpit records the selected estimate state, report values, object mappings, and writeback target.</span></div>
+        <div class="pipe-step"><strong>Generate enriched IFC</strong><span>IfcOpenShell and MCP tools attach MARPA ids, IFC entities, property sets, quantities, cost fields, source lineage, and georeference context.</span></div>
+        <div class="pipe-step"><strong>Import / verify</strong><span>Vectorworks receives the enriched IFC or MCP operation package, then the system reads back objects, records, IFC properties, quantities, and export status.</span></div>
+        <div class="pipe-step"><strong>Record result</strong><span>The writeback result becomes a new source event with a receipt, verification artifact, export hash, issues list, and resume pointer.</span></div>
       </div>
     </section>
 
@@ -64,8 +188,8 @@
       <h2>What happens next</h2>
       <div class="pipeline">
         <div class="pipe-step"><strong>Project control shortlist</strong><span>Separate current project VWX files from backups, libraries, samples, templates, and tool corpora.</span></div>
-        <div class="pipe-step"><strong>First Vectorworks harvest</strong><span>Open one project, start the MCP server, read layers/classes/worksheets/records/resources, and export all useful formats from one design state.</span></div>
-        <div class="pipe-step"><strong>Evidence package</strong><span>Write a source package containing the export files, extracted text, tables, geometry, images, and receipts.</span></div>
+        <div class="pipe-step"><strong>First Vectorworks harvest</strong><span>Open one project, start the MCP server, read the full document state, and export all useful formats from one design state.</span></div>
+        <div class="pipe-step"><strong>Evidence package</strong><span>Write a source package containing export files, extracted text, tables, geometry, images, records, resources, and receipts.</span></div>
         <div class="pipe-step"><strong>Naming model draft</strong><span>Create the first Pydantic model for MARPA object identity, Vectorworks bridge fields, IFC mapping, quantity evidence, and cost classification.</span></div>
         <div class="pipe-step"><strong>Sample enrichment</strong><span>Attach MARPA property sets and quantity/cost fields to a small group of objects, then inspect the enriched IFC round trip.</span></div>
       </div>
