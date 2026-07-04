@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Predictive Pricing And Live Reports</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="diagrams.html">Diagrams</a>
+        <a href="ifc-value.html">IFC Value</a>
+        <a href="cost-formulas.html">Cost Data</a>
+        <a href="predictive-pricing.html">Live Pricing</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Predictive pricing model</div>
+      <h1>Once the data is normalized, reports can update in real time</h1>
+      <div class="rule"></div>
+      <p class="lead">The pricing model uses classified design objects, quantities, formulas, historical costs, and project variables to populate MARPA report templates. In Marimo, those variables become live sliders, ranges, and scenario controls.</p>
+
+      <div class="model-board">
+        <aside class="controls-panel">
+          <h2>Scenario controls</h2>
+          <div class="control-group">
+            <label class="control-label" for="quantity">Scope quantity <output id="quantityOut">1.00x</output></label>
+            <input id="quantity" type="range" min="80" max="135" value="100">
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="location">Location factor <output id="locationOut">1.08x</output></label>
+            <input id="location" type="range" min="90" max="130" value="108">
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="material">Material volatility <output id="materialOut">6%</output></label>
+            <input id="material" type="range" min="0" max="28" value="6">
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="labor">Labor pressure <output id="laborOut">8%</output></label>
+            <input id="labor" type="range" min="0" max="30" value="8">
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="margin">Target margin <output id="marginOut">18%</output></label>
+            <input id="margin" type="range" min="8" max="32" value="18">
+          </div>
+          <div class="control-group">
+            <label class="control-label">Estimate range</label>
+            <div class="range-row">
+              <div>
+                <label class="control-label" for="low">Low <output id="lowOut">-8%</output></label>
+                <input id="low" type="range" min="-20" max="0" value="-8">
+              </div>
+              <div>
+                <label class="control-label" for="high">High <output id="highOut">14%</output></label>
+                <input id="high" type="range" min="0" max="35" value="14">
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="report-stack">
+          <article class="report-sheet">
+            <div class="report-header">
+              <h3>MARPA Project Estimate Summary</h3>
+              <span class="chip">live scenario</span>
+            </div>
+            <div class="report-body">
+              <div class="metric-grid">
+                <div class="metric"><strong>Base cost</strong><span id="baseCost">$428,000</span></div>
+                <div class="metric"><strong>Adjusted cost</strong><span id="adjustedCost">$499,219</span></div>
+                <div class="metric"><strong>Client price</strong><span id="clientPrice">$589,078</span></div>
+                <div class="metric"><strong>Margin dollars</strong><span id="marginDollars">$89,859</span></div>
+              </div>
+              <div class="range-band" id="rangeBand" data-low="$459,281" data-high="$669,549"></div>
+            </div>
+          </article>
+
+          <article class="report-sheet">
+            <div class="report-header">
+              <h3>Report packet populated from the same model</h3>
+              <span class="chip">branded templates</span>
+            </div>
+            <div class="report-body">
+              <p>After the source data is classified, the same scenario variables can populate MARPA's branded reports, project summaries, estimate packets, and scope documents. The values update as the estimator adjusts quantity, location, material, labor, margin, and uncertainty assumptions.</p>
+              <div class="doc-grid">
+                <div class="doc-card">
+                  <h4>Estimate packet</h4>
+                  <p><strong id="packetTotal">$589,078</strong><br>price range and scope summary</p>
+                </div>
+                <div class="doc-card">
+                  <h4>Cost analysis</h4>
+                  <p><strong id="analysisDelta">+16.6%</strong><br>change from baseline model</p>
+                </div>
+                <div class="doc-card">
+                  <h4>Risk range</h4>
+                  <p><strong id="riskRange">$459k - $670k</strong><br>low / high scenario band</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-sheet">
+            <div class="report-header">
+              <h3>How the model works</h3>
+              <span class="chip">normalized data</span>
+            </div>
+            <div class="report-body">
+              <table class="matrix">
+                <thead>
+                  <tr>
+                    <th>Input</th>
+                    <th>Comes from</th>
+                    <th>Updates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Quantity and scope</td>
+                    <td>Vectorworks objects, worksheets, PDF/DXF/IFC extraction</td>
+                    <td>takeoff totals and object-level cost</td>
+                  </tr>
+                  <tr>
+                    <td>Location and market factors</td>
+                    <td>project metadata, historical estimates, regional assumptions</td>
+                    <td>adjusted cost and bid range</td>
+                  </tr>
+                  <tr>
+                    <td>Materials and labor</td>
+                    <td>workbooks, price sheets, schedules, vendor catalogs</td>
+                    <td>unit rates, volatility, contingency</td>
+                  </tr>
+                  <tr>
+                    <td>Margin and uncertainty</td>
+                    <td>MARPA business rules and scenario controls</td>
+                    <td>client price, margin dollars, low/high range</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const base = 428000;
+    const els = {
+      quantity: document.getElementById("quantity"),
+      location: document.getElementById("location"),
+      material: document.getElementById("material"),
+      labor: document.getElementById("labor"),
+      margin: document.getElementById("margin"),
+      low: document.getElementById("low"),
+      high: document.getElementById("high"),
+      quantityOut: document.getElementById("quantityOut"),
+      locationOut: document.getElementById("locationOut"),
+      materialOut: document.getElementById("materialOut"),
+      laborOut: document.getElementById("laborOut"),
+      marginOut: document.getElementById("marginOut"),
+      lowOut: document.getElementById("lowOut"),
+      highOut: document.getElementById("highOut"),
+      baseCost: document.getElementById("baseCost"),
+      adjustedCost: document.getElementById("adjustedCost"),
+      clientPrice: document.getElementById("clientPrice"),
+      marginDollars: document.getElementById("marginDollars"),
+      packetTotal: document.getElementById("packetTotal"),
+      analysisDelta: document.getElementById("analysisDelta"),
+      riskRange: document.getElementById("riskRange"),
+      rangeBand: document.getElementById("rangeBand")
+    };
+
+    function money(value, compact = false) {
+      if (compact) return "$" + Math.round(value / 1000).toLocaleString() + "k";
+      return value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    }
+
+    function pct(value) {
+      return `${value}%`;
+    }
+
+    function update() {
+      const quantity = Number(els.quantity.value) / 100;
+      const location = Number(els.location.value) / 100;
+      const material = Number(els.material.value) / 100;
+      const labor = Number(els.labor.value) / 100;
+      const margin = Number(els.margin.value) / 100;
+      const low = Number(els.low.value) / 100;
+      const high = Number(els.high.value) / 100;
+
+      const adjusted = base * quantity * location * (1 + material) * (1 + labor);
+      const client = adjusted * (1 + margin);
+      const marginDollars = client - adjusted;
+      const lowValue = client * (1 + low);
+      const highValue = client * (1 + high);
+      const delta = ((adjusted / base) - 1) * 100;
+
+      els.quantityOut.textContent = `${quantity.toFixed(2)}x`;
+      els.locationOut.textContent = `${location.toFixed(2)}x`;
+      els.materialOut.textContent = pct(Math.round(material * 100));
+      els.laborOut.textContent = pct(Math.round(labor * 100));
+      els.marginOut.textContent = pct(Math.round(margin * 100));
+      els.lowOut.textContent = pct(Math.round(low * 100));
+      els.highOut.textContent = pct(Math.round(high * 100));
+
+      els.baseCost.textContent = money(base);
+      els.adjustedCost.textContent = money(adjusted);
+      els.clientPrice.textContent = money(client);
+      els.marginDollars.textContent = money(marginDollars);
+      els.packetTotal.textContent = money(client);
+      els.analysisDelta.textContent = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)}%`;
+      els.riskRange.textContent = `${money(lowValue, true)} - ${money(highValue, true)}`;
+      els.rangeBand.dataset.low = money(lowValue);
+      els.rangeBand.dataset.high = money(highValue);
+    }
+
+    Object.values(els).forEach((el) => {
+      if (el && el.tagName === "INPUT") el.addEventListener("input", update);
+    });
+    update();
+  </script>
+</body>
+</html>

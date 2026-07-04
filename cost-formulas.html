@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cost Data And Formulas</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#fff5f3",
+        primaryTextColor: "#111111",
+        primaryBorderColor: "#d94b3f",
+        lineColor: "#a93630",
+        secondaryColor: "#ffffff",
+        tertiaryColor: "#f4f0ed",
+        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="diagrams.html">Diagrams</a>
+        <a href="ifc-value.html">IFC Value</a>
+        <a href="cost-formulas.html">Cost Data</a>
+        <a href="predictive-pricing.html">Live Pricing</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Cost data and formulas</div>
+      <h1>The workbook is also source evidence</h1>
+      <div class="rule"></div>
+      <p class="lead">Excel files, worksheets, schedules, formulas, and estimate workbooks show how MARPA already thinks about quantities, categories, pricing, margin, and project cost. We preserve that logic instead of flattening it into anonymous rows.</p>
+
+      <div class="mermaid-card">
+        <h3>Workbook evidence flow</h3>
+        <pre class="mermaid">
+flowchart LR
+  XLSX["XLSX / Numbers / CSV\nproject estimates • profit calculations • plant schedules"] --> SHEETS["Sheets + named ranges\nline items • categories • totals"]
+  SHEETS --> FORMULAS["Formula extraction\nquantity × rate • markup • margin • contingency"]
+  SHEETS --> VALUES["Observed values\nhistorical costs • bids • allowances"]
+  FORMULAS --> MODEL["MARPA cost model\nbusiness logic + units"]
+  VALUES --> MODEL
+  MODEL --> OBJECTS["Design object link\nhardscape • plant • wall • material"]
+  OBJECTS --> IFC["IFC property sets\nquantity + cost classification"]
+  OBJECTS --> DASH["Scenario analysis\nMarimo dashboards + estimates"]
+        </pre>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="grid-2">
+        <div class="card">
+          <h3>What we extract from workbooks</h3>
+          <ul>
+            <li>sheet names and workbook structure</li>
+            <li>headers, line items, totals, subtotals</li>
+            <li>formulas and cell dependencies</li>
+            <li>quantity units and measurement basis</li>
+            <li>labor, material, equipment, markup, margin</li>
+            <li>project/category/cost-code naming patterns</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <h3>Example formula logic</h3>
+          <code class="formula">extended_cost = quantity * unit_rate
+subtotal = material_cost + labor_cost + equipment_cost
+estimated_total = subtotal * (1 + markup_rate)
+risk_range = estimated_total ± contingency</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Why it matters</div>
+      <h2>Cost analysis improves when formulas attach to objects</h2>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Workbook evidence</th>
+            <th>Design connection</th>
+            <th>Downstream value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plant schedule quantities</td>
+            <td>Plant candidates and Vectorworks plant records</td>
+            <td>Planting cost by species, size, count, and project area</td>
+          </tr>
+          <tr>
+            <td>Hardscape unit costs</td>
+            <td>Hardscape candidates, area, thickness, material</td>
+            <td>Cost per square foot, quantity takeoff, scenario pricing</td>
+          </tr>
+          <tr>
+            <td>Wall/edge line items</td>
+            <td>Length, height, material, detail reference</td>
+            <td>Linear-foot cost analysis and scope comparison</td>
+          </tr>
+          <tr>
+            <td>Markup and margin formulas</td>
+            <td>Estimate group and project phase</td>
+            <td>Profitability, risk bands, and bid strategy</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

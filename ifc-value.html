@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why IFC Data Matters</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#fff5f3",
+        primaryTextColor: "#111111",
+        primaryBorderColor: "#d94b3f",
+        lineColor: "#a93630",
+        secondaryColor: "#ffffff",
+        tertiaryColor: "#f4f0ed",
+        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="diagrams.html">Diagrams</a>
+        <a href="ifc-value.html">IFC Value</a>
+        <a href="cost-formulas.html">Cost Data</a>
+        <a href="predictive-pricing.html">Live Pricing</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Why IFC matters</div>
+      <h1>Without structured IFC data, the downstream system loses the object</h1>
+      <div class="rule"></div>
+      <p class="lead">The business value is not just exporting an IFC file. The value is creating design objects that carry identity, geometry, quantity, source evidence, and cost meaning together.</p>
+
+      <div class="compare">
+        <div class="compare-panel blocked">
+          <h2>Without useful IFC data</h2>
+          <ul>
+            <li>Hardscapes may exist as flat linework instead of cost-aware BIM objects.</li>
+            <li>Planting, walls, materials, and quantities remain scattered across sheets and worksheets.</li>
+            <li>3D viewers cannot reliably group objects by cost, material, layer, or scope.</li>
+            <li>Estimating depends on disconnected rows and manual interpretation.</li>
+            <li>Writeback into Vectorworks has no stable object identity to target.</li>
+          </ul>
+        </div>
+        <div class="compare-panel enabled">
+          <h2>With MARPA-enriched IFC data</h2>
+          <ul>
+            <li>Each object has a stable MARPA id connected to Vectorworks source names.</li>
+            <li>IFC entities and property sets carry classification, quantities, and lineage.</li>
+            <li>Cost analysis can attach to real design geometry and takeoff units.</li>
+            <li>3D and dashboard review can show cost, scope, and risk by object.</li>
+            <li>Enriched IFC can be imported back into Vectorworks for more useful future projects.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="mermaid-card">
+        <h3>Before and after</h3>
+        <pre class="mermaid">
+flowchart LR
+  subgraph Before["Before enrichment"]
+    A["PDF labels"] --- B["DWG/DXF linework"]
+    B --- C["Worksheets"]
+    C --- D["Partial IFC export"]
+    D --- E["Manual cost reasoning"]
+  end
+
+  subgraph After["After MARPA naming + IFC enrichment"]
+    F["Stable MARPA object id"] --> G["IFC entity + property sets"]
+    G --> H["Quantity takeoff fields"]
+    H --> I["Cost code + pricing source"]
+    I --> J["3D review + estimate scenarios"]
+    J --> K["Vectorworks import / writeback"]
+  end
+
+  E --> F
+        </pre>
+      </div>
+
+      <div class="mermaid-card">
+        <h3>What Vectorworks gets back</h3>
+        <pre class="mermaid">
+flowchart TB
+  NAME["MARPA naming schema"] --> JSON["JSON / Pydantic evidence package"]
+  JSON --> IFC["Enriched IFC\nentities + property sets + quantities"]
+  IFC --> VW["Vectorworks import"]
+  VW --> USE1["better object search"]
+  VW --> USE2["clearer schedules"]
+  VW --> USE3["more useful worksheets"]
+  VW --> USE4["repeatable cost analysis"]
+  VW --> USE5["project-to-project learning"]
+        </pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

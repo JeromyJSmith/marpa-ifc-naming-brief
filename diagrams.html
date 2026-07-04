@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARPA Pipeline Diagrams</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#fff5f3",
+        primaryTextColor: "#111111",
+        primaryBorderColor: "#d94b3f",
+        lineColor: "#a93630",
+        secondaryColor: "#ffffff",
+        tertiaryColor: "#f4f0ed",
+        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="diagrams.html">Diagrams</a>
+        <a href="ifc-value.html">IFC Value</a>
+        <a href="cost-formulas.html">Cost Data</a>
+        <a href="predictive-pricing.html">Live Pricing</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Pipeline diagrams</div>
+      <h1>The design is the data pipeline</h1>
+      <div class="rule"></div>
+      <p class="lead">These diagrams show how we move from one Vectorworks design state into source evidence packages, MARPA naming, IFC enrichment, cost analysis, review, and Vectorworks writeback.</p>
+
+      <div class="mermaid-card">
+        <h3>End-to-end architecture</h3>
+        <pre class="mermaid">
+flowchart LR
+  VW["Vectorworks project file\nVWX + active design state"] --> MCP["MCP / Vectorworks scripting\ninspect + export"]
+  MCP --> EXPORTS["Export package\nPDF • DWG/DXF • IFC variants • worksheets • images"]
+  EXPORTS --> DOCS["Document separation\ntext • tables • figures • layout • images"]
+  EXPORTS --> GEOM["Geometry extraction\n2D linework • IFC entities • vector paths"]
+  EXPORTS --> SHEETS["Worksheet/formula evidence\nquantities • rates • categories"]
+  DOCS --> PACKAGE["Normalized evidence package\nJSON + files + receipts"]
+  GEOM --> PACKAGE
+  SHEETS --> PACKAGE
+  PACKAGE --> NAME["MARPA naming bridge\nstable object identity"]
+  NAME --> IFC["IFC enrichment\nentities • property sets • quantities"]
+  NAME --> COST["Cost model\ncodes • quantities • pricing • risk"]
+  IFC --> REVIEW["Marimo / dashboard review\ninspect • adjust • compare"]
+  COST --> REVIEW
+  REVIEW --> WRITEBACK["Vectorworks writeback\nenriched IFC + receipts"]
+  WRITEBACK --> VW
+        </pre>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="mermaid-card">
+        <h3>Evidence package structure</h3>
+        <pre class="mermaid">
+flowchart TB
+  ROOT["ExtractedSourcePackage"] --> PROJECT["MarpaProject\nproject code • job number"]
+  ROOT --> ARTIFACT["ExportArtifact\nfile hash • export settings • source path"]
+  ROOT --> PAGE["ExtractedPage\nsheet number • scale • page image"]
+  PAGE --> TEXT["PdfTextSpan\nlabels • notes • dimensions"]
+  PAGE --> PATHS["PdfVectorPath\nlinework • symbols • possible geometry"]
+  PAGE --> IMG["ExtractedImageAsset\nrendered views • plant images • sheet images"]
+  ROOT --> VWOBJ["VectorworksObjectIdentity\nlayer • class • record • resource"]
+  ROOT --> CANDIDATE["ObjectCandidate\nhardscape • plant • wall • material"]
+  CANDIDATE --> QTY["QuantityEvidence\ncount • area • length • volume • unit"]
+  CANDIDATE --> CLASS["ClassificationCandidate\nCSI • MARPA category • IFC entity"]
+  CANDIDATE --> LINEAGE["SourceLineage\nwhich file/page/tool produced the fact"]
+        </pre>
+      </div>
+
+      <div class="mermaid-card">
+        <h3>Naming bridge</h3>
+        <pre class="mermaid">
+flowchart LR
+  A["Vectorworks names\nlayers • classes • records • worksheets"] <--> B["MARPA canonical object model\nstable object id"]
+  B <--> C["IFC mapping\nentity • property set • classification"]
+  B <--> D["Cost / quantity taxonomy\nunit • rate • takeoff basis"]
+  C --> E["Enriched IFC\nportable BIM data"]
+  D --> F["Estimate model\ncost ranges • risk • scenarios"]
+  E --> G["Vectorworks import\nbetter BIM objects"]
+  F --> H["MARPA review\npricing and scope decisions"]
+        </pre>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="mermaid-card">
+        <h3>Parallel work lanes</h3>
+        <pre class="mermaid">
+flowchart TB
+  START["Same project / same design state"] --> A["VWX control-file shortlist"]
+  START --> B["Vectorworks MCP harvest"]
+  START --> C["Export matrix"]
+  START --> D["Document/image separation"]
+  START --> E["Workbook and formula extraction"]
+  START --> F["IFC version comparison"]
+  A --> MODEL["MARPA naming + Pydantic model"]
+  B --> MODEL
+  C --> MODEL
+  D --> MODEL
+  E --> MODEL
+  F --> MODEL
+  MODEL --> NEXT["IFC enrichment + cost analysis + review surface"]
+        </pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

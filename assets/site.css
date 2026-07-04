@@ -418,6 +418,233 @@ p {
   background: #fffaf9;
 }
 
+.mermaid-card {
+  background: #ffffff;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.mermaid-card h3 {
+  margin-bottom: 18px;
+}
+
+.mermaid {
+  min-width: 760px;
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.compare-panel {
+  border-radius: 18px;
+  padding: 28px;
+  border: 2px solid var(--line);
+  background: #ffffff;
+}
+
+.compare-panel.blocked {
+  border-color: #2d2d2d;
+  background: #171717;
+  color: #ffffff;
+}
+
+.compare-panel.enabled {
+  border-color: var(--marpa-red);
+  background: var(--soft);
+}
+
+.compare-panel ul {
+  margin: 18px 0 0;
+  padding-left: 24px;
+}
+
+.compare-panel li {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.formula {
+  display: block;
+  background: #171717;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 18px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.model-board {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 26px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.controls-panel {
+  position: sticky;
+  top: 100px;
+  background: #171717;
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.control-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0 0 20px;
+  margin: 0 0 20px;
+}
+
+.control-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.control-label output {
+  color: #ffffff;
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.range-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--marpa-red);
+}
+
+.report-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.report-sheet {
+  background: #ffffff;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 24px;
+}
+
+.report-header h3 {
+  margin: 0;
+}
+
+.report-body {
+  padding: 24px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.metric {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.metric strong {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.metric span {
+  display: block;
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.range-band {
+  position: relative;
+  min-height: 34px;
+  margin: 20px 0 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2b2b2b, var(--marpa-red));
+}
+
+.range-band::before,
+.range-band::after {
+  position: absolute;
+  top: 42px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.range-band::before {
+  content: attr(data-low);
+  left: 0;
+}
+
+.range-band::after {
+  content: attr(data-high);
+  right: 0;
+}
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.doc-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: #fffaf9;
+}
+
+.doc-card h4 {
+  margin: 0 0 10px;
+  font-size: 19px;
+}
+
+.doc-card p {
+  font-size: 18px;
+  margin: 0;
+}
+
 .footer-note {
   margin-top: 34px;
   color: var(--muted);
@@ -453,8 +680,16 @@ p {
 
   .grid-2,
   .grid-3,
+  .compare,
+  .model-board,
+  .metric-grid,
+  .doc-grid,
   .dependency {
     grid-template-columns: 1fr;
+  }
+
+  .controls-panel {
+    position: static;
   }
 
   .diagram-row {
