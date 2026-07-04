@@ -525,6 +525,52 @@ p {
   font-size: clamp(19px, 1.8vw, 24px);
 }
 
+.ifc-reading-page {
+  min-height: auto;
+}
+
+.ifc-reading-page h1 {
+  max-width: 1180px;
+  font-size: clamp(54px, 6.8vw, 92px);
+}
+
+.ifc-readable-card {
+  margin-top: 34px;
+  padding: clamp(32px, 4vw, 58px);
+}
+
+.ifc-readable-card h3 {
+  font-size: clamp(42px, 5vw, 70px);
+  margin-bottom: 22px;
+}
+
+.ifc-readable-card p {
+  max-width: 1200px;
+  font-size: clamp(32px, 3.4vw, 52px);
+  line-height: 1.14;
+}
+
+.ifc-readable-list {
+  margin: 0;
+  padding-left: 34px;
+}
+
+.ifc-readable-list li {
+  font-size: clamp(31px, 3.3vw, 50px);
+  line-height: 1.16;
+  margin-bottom: 24px;
+}
+
+.ifc-readable-list li:last-child {
+  margin-bottom: 0;
+}
+
+.ifc-vs-stack {
+  display: grid;
+  gap: 22px;
+  margin-top: 30px;
+}
+
 .evidence-stack {
   display: grid;
   gap: 22px;

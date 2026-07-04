@@ -31,27 +31,48 @@
       <h1>Without structured IFC data, the downstream system loses the object</h1>
       <div class="rule"></div>
       <p class="lead">The business value is not just exporting an IFC file. The value is creating design objects that carry identity, geometry, quantity, source evidence, and cost meaning together.</p>
+    </section>
 
-      <div class="compare">
-        <div class="compare-panel blocked">
-          <h2>Without useful IFC data</h2>
-          <ul>
-            <li>Hardscapes may exist as flat linework instead of cost-aware BIM objects.</li>
-            <li>Planting, walls, materials, and quantities remain scattered across sheets and worksheets.</li>
-            <li>3D viewers cannot reliably group objects by cost, material, layer, or scope.</li>
-            <li>Estimating depends on disconnected rows and manual interpretation.</li>
-            <li>Writeback into Vectorworks has no stable object identity to target.</li>
-          </ul>
+    <section class="page ifc-reading-page">
+      <div class="kicker">Before</div>
+      <h1>Without useful IFC data, the project stays fragmented</h1>
+      <div class="big-node dark ifc-readable-card">
+        <ul class="ifc-readable-list">
+          <li>Hardscapes may exist as flat linework instead of cost-aware BIM objects.</li>
+          <li>Planting, walls, materials, and quantities remain scattered across sheets and worksheets.</li>
+          <li>3D viewers cannot reliably group objects by cost, material, layer, or scope.</li>
+          <li>Estimating depends on disconnected rows and manual interpretation.</li>
+          <li>Vectorworks import has no stable object identity to target.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page ifc-reading-page">
+      <div class="kicker">After</div>
+      <h1>With MARPA-enriched IFC data, the object becomes reusable</h1>
+      <div class="big-node red ifc-readable-card">
+        <ul class="ifc-readable-list">
+          <li>Each object has a stable MARPA id connected to Vectorworks source names.</li>
+          <li>IFC entities and property sets carry classification, quantities, and lineage.</li>
+          <li>Cost analysis attaches to real design geometry and takeoff units.</li>
+          <li>3D and dashboard review can show cost, scope, and risk by object.</li>
+          <li>Enriched IFC can be imported back into Vectorworks for more useful future projects.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page ifc-reading-page">
+      <div class="kicker">What changes</div>
+      <h1>The before and after, in one readable stack</h1>
+      <div class="ifc-vs-stack">
+        <div class="big-node dark ifc-readable-card">
+          <h3>Before enrichment</h3>
+          <p>PDF labels, DWG/DXF linework, worksheets, and partial IFC exports all describe parts of the project, but no single object carries the full business meaning.</p>
         </div>
-        <div class="compare-panel enabled">
-          <h2>With MARPA-enriched IFC data</h2>
-          <ul>
-            <li>Each object has a stable MARPA id connected to Vectorworks source names.</li>
-            <li>IFC entities and property sets carry classification, quantities, and lineage.</li>
-            <li>Cost analysis can attach to real design geometry and takeoff units.</li>
-            <li>3D and dashboard review can show cost, scope, and risk by object.</li>
-            <li>Enriched IFC can be imported back into Vectorworks for more useful future projects.</li>
-          </ul>
+        <div class="big-arrow">↓</div>
+        <div class="big-node red ifc-readable-card">
+          <h3>After MARPA naming + IFC enrichment</h3>
+          <p>Stable MARPA object ids connect to enriched IFC entities, quantity takeoff fields, cost codes, pricing sources, 3D review, predictive pricing, and Vectorworks import.</p>
         </div>
       </div>
     </section>
