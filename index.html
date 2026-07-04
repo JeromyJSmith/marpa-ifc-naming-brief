@@ -121,8 +121,9 @@
     const mount = document.getElementById("marpaCoin");
     if (mount) {
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-      camera.position.set(0, 0.52, 4.2);
+      const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+      camera.position.set(0, 0.12, 5.8);
+      camera.lookAt(0, 0, 0);
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setClearColor(0xffffff, 0);
@@ -163,9 +164,10 @@
 
       function resize() {
         const rect = mount.getBoundingClientRect();
-        const size = Math.max(280, Math.floor(Math.min(rect.width, 560)));
-        renderer.setSize(size, size);
-        camera.aspect = 1;
+        const width = Math.max(320, Math.floor(rect.width));
+        const height = Math.max(260, Math.floor(rect.height));
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
       }
 
@@ -174,7 +176,7 @@
       function animate() {
         if (!alive) return;
         requestAnimationFrame(animate);
-        pivot.rotation.y += clock.getDelta() * Math.PI * 0.46;
+        pivot.rotation.y += clock.getDelta() * Math.PI * 0.22;
         renderer.render(scene, camera);
       }
 
