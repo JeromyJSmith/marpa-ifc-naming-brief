@@ -153,6 +153,75 @@
         </div>
       </div>
     </section>
+
+    <section class="page">
+      <div class="kicker">MARPA report app simulation</div>
+      <h1>The same model can populate a branded report template</h1>
+      <div class="rule"></div>
+      <p class="lead">This is a static GitHub Pages version of the Marimo / AnyWidget idea: pick a project, populate the report shell, then adjust the low and high assumptions for each cost section. The report below updates immediately, the way a live MARPA notebook can update a project packet.</p>
+
+      <div class="report-demo-board">
+        <aside class="template-controls">
+          <div class="control-heading">
+            <h2>Report controls</h2>
+            <button class="populate-toggle active" id="populateToggle" type="button">Populated</button>
+          </div>
+
+          <div class="project-tabs" role="group" aria-label="Project examples">
+            <button class="project-tab active" type="button" data-project="farber">Farber-Haines</button>
+            <button class="project-tab" type="button" data-project="rose">Rose</button>
+            <button class="project-tab" type="button" data-project="ulm">Ulm</button>
+          </div>
+
+          <p class="template-note">Each section keeps its own low and high range. In the real notebook, those controls would be backed by normalized quantities, historical cost evidence, pricing formulas, and MARPA business rules.</p>
+
+          <div class="section-control-list" id="sectionControls"></div>
+        </aside>
+
+        <article class="report-preview" aria-live="polite">
+          <div class="budget-report">
+            <div class="budget-report-header">
+              <div>
+                <div class="budget-title" id="reportTitle">Rough Initial Budget Worksheet</div>
+                <div class="budget-meta" id="reportProject">Farber-Haines [2521]</div>
+                <div class="budget-meta" id="reportSubtitle">Landscape construction work outline</div>
+              </div>
+              <img class="budget-logo" src="assets/marpa-logo.png" alt="MARPA">
+            </div>
+
+            <div class="budget-note" id="reportNote">Interactive report shell populated from the normalized project evidence package.</div>
+
+            <table class="budget-table">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Qty</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="reportRows"></tbody>
+            </table>
+
+            <div class="budget-summary">
+              <div>
+                <span>Modeled subtotal</span>
+                <strong id="reportSubtotal">$282,734</strong>
+              </div>
+              <div>
+                <span>Modeled range</span>
+                <strong id="reportRange">$257,912 - $320,492</strong>
+              </div>
+              <div>
+                <span>Scenario status</span>
+                <strong id="reportStatus">Live populated template</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -230,6 +299,283 @@
       if (el && el.tagName === "INPUT") el.addEventListener("input", update);
     });
     update();
+
+    const reportProjects = {
+      farber: {
+        title: "Rough Initial Budget Worksheet",
+        project: "Farber-Haines [2521]",
+        subtitle: "Landscape construction work outline",
+        note: "Interactive report shell populated from the normalized project evidence package.",
+        sections: [
+          {
+            key: "hardscape",
+            name: "2.0 Hardscape",
+            low: -7,
+            high: 12,
+            lines: [
+              ["Concrete paver walk", 1850, "SF", 28],
+              ["Retaining edge", 260, "LF", 92],
+              ["Drainage base allowance", 1, "LS", 18500]
+            ]
+          },
+          {
+            key: "planting",
+            name: "4.0 Planting",
+            low: -9,
+            high: 16,
+            lines: [
+              ["Trees and shrubs", 72, "EA", 520],
+              ["Groundcover", 2100, "SF", 8],
+              ["Soil amendment allowance", 1, "LS", 14200]
+            ]
+          },
+          {
+            key: "systems",
+            name: "6.0 Lighting + irrigation",
+            low: -5,
+            high: 18,
+            lines: [
+              ["Path lights", 34, "EA", 620],
+              ["Irrigation zone allowance", 1, "LS", 24000],
+              ["Controller and sleeves", 1, "LS", 6800]
+            ]
+          }
+        ]
+      },
+      rose: {
+        title: "Retail + Vendor Budget Worksheet",
+        project: "Rose [2520]",
+        subtitle: "Planting, materials, and vendor pricing scenario",
+        note: "Retail and vendor assumptions shown as a live scenario surface.",
+        sections: [
+          {
+            key: "plant_palette",
+            name: "1.0 Plant palette",
+            low: -6,
+            high: 14,
+            lines: [
+              ["Specimen trees", 18, "EA", 1250],
+              ["Shrub grouping", 146, "EA", 86],
+              ["Perennial massing", 820, "SF", 11]
+            ]
+          },
+          {
+            key: "materials",
+            name: "2.0 Materials",
+            low: -8,
+            high: 20,
+            lines: [
+              ["Stone paving", 980, "SF", 42],
+              ["Gravel surfacing", 610, "SF", 13],
+              ["Mulch and soil media", 1, "LS", 9200]
+            ]
+          },
+          {
+            key: "labor",
+            name: "3.0 Labor + install",
+            low: -4,
+            high: 17,
+            lines: [
+              ["Plant installation", 1, "LS", 27500],
+              ["Hardscape installation", 1, "LS", 46800],
+              ["Site coordination", 1, "LS", 11800]
+            ]
+          }
+        ]
+      },
+      ulm: {
+        title: "Cost Comparison Worksheet",
+        project: "Ulm",
+        subtitle: "Scope options and comparative budget scenario",
+        note: "Comparison view for testing how scope alternates move the report totals.",
+        sections: [
+          {
+            key: "option_a",
+            name: "Option A - base scope",
+            low: -10,
+            high: 9,
+            lines: [
+              ["Base planting scope", 1, "LS", 74000],
+              ["Base hardscape scope", 1, "LS", 118000],
+              ["Base lighting scope", 1, "LS", 31000]
+            ]
+          },
+          {
+            key: "option_b",
+            name: "Option B - enhanced scope",
+            low: -7,
+            high: 19,
+            lines: [
+              ["Enhanced paving", 1, "LS", 64000],
+              ["Feature planting", 1, "LS", 38500],
+              ["Water / focal feature", 1, "LS", 42000]
+            ]
+          },
+          {
+            key: "carry",
+            name: "Carry items",
+            low: -5,
+            high: 12,
+            lines: [
+              ["Mobilization", 1, "LS", 16500],
+              ["General conditions", 1, "LS", 28500],
+              ["Design coordination", 1, "LS", 9500]
+            ]
+          }
+        ]
+      }
+    };
+
+    const reportState = {
+      project: "farber",
+      populated: true,
+      ranges: {}
+    };
+
+    const reportEls = {
+      populateToggle: document.getElementById("populateToggle"),
+      projectTabs: Array.from(document.querySelectorAll(".project-tab")),
+      sectionControls: document.getElementById("sectionControls"),
+      title: document.getElementById("reportTitle"),
+      project: document.getElementById("reportProject"),
+      subtitle: document.getElementById("reportSubtitle"),
+      note: document.getElementById("reportNote"),
+      rows: document.getElementById("reportRows"),
+      subtotal: document.getElementById("reportSubtotal"),
+      range: document.getElementById("reportRange"),
+      status: document.getElementById("reportStatus")
+    };
+
+    function sectionBase(section) {
+      return section.lines.reduce((total, line) => total + line[1] * line[3], 0);
+    }
+
+    function blankValue(value) {
+      return reportState.populated ? value : '<span class="empty-value">-</span>';
+    }
+
+    function initRanges(projectKey) {
+      const project = reportProjects[projectKey];
+      project.sections.forEach((section) => {
+        if (!reportState.ranges[section.key]) {
+          reportState.ranges[section.key] = { low: section.low, high: section.high };
+        }
+      });
+    }
+
+    function renderSectionControls() {
+      const project = reportProjects[reportState.project];
+      reportEls.sectionControls.innerHTML = "";
+      project.sections.forEach((section) => {
+        const range = reportState.ranges[section.key];
+        const card = document.createElement("div");
+        card.className = "section-control";
+        card.innerHTML = `
+          <div class="section-control-head">
+            <strong>${section.name}</strong>
+            <span>${money(sectionBase(section), true)} base</span>
+          </div>
+          <div class="dual-row">
+            <label>Low <output>${range.low}%</output>
+              <input type="range" min="-25" max="0" value="${range.low}" data-section="${section.key}" data-bound="low">
+            </label>
+            <label>High <output>+${range.high}%</output>
+              <input type="range" min="0" max="35" value="${range.high}" data-section="${section.key}" data-bound="high">
+            </label>
+          </div>
+        `;
+        reportEls.sectionControls.appendChild(card);
+      });
+
+      reportEls.sectionControls.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("input", (event) => {
+          const sectionKey = event.target.dataset.section;
+          const bound = event.target.dataset.bound;
+          reportState.ranges[sectionKey][bound] = Number(event.target.value);
+          renderReport();
+          renderSectionControls();
+        });
+      });
+    }
+
+    function renderReport() {
+      const project = reportProjects[reportState.project];
+      reportEls.title.textContent = project.title;
+      reportEls.project.textContent = project.project;
+      reportEls.subtitle.textContent = project.subtitle;
+      reportEls.note.textContent = project.note;
+      reportEls.populateToggle.textContent = reportState.populated ? "Populated" : "Blank shell";
+      reportEls.populateToggle.classList.toggle("active", reportState.populated);
+
+      let subtotal = 0;
+      let lowTotal = 0;
+      let highTotal = 0;
+      const rows = [];
+
+      project.sections.forEach((section) => {
+        const range = reportState.ranges[section.key];
+        const midpoint = 1 + ((range.low + range.high) / 2 / 100);
+        const lowFactor = 1 + (range.low / 100);
+        const highFactor = 1 + (range.high / 100);
+        const baseTotal = sectionBase(section);
+        const sectionTotal = baseTotal * midpoint;
+        subtotal += sectionTotal;
+        lowTotal += baseTotal * lowFactor;
+        highTotal += baseTotal * highFactor;
+
+        rows.push(`
+          <tr class="budget-section-row">
+            <td colspan="4">${section.name}</td>
+            <td>${blankValue(money(sectionTotal))}</td>
+          </tr>
+        `);
+
+        section.lines.forEach((line) => {
+          const lineTotal = line[1] * line[3] * midpoint;
+          rows.push(`
+            <tr class="budget-line-row">
+              <td>${line[0]}</td>
+              <td>${blankValue(line[1].toLocaleString())}</td>
+              <td>${line[2]}</td>
+              <td>${blankValue(money(line[3]))}</td>
+              <td>${blankValue(money(lineTotal))}</td>
+            </tr>
+          `);
+        });
+      });
+
+      rows.push(`
+        <tr class="budget-total-row">
+          <td colspan="4">Modeled subtotal</td>
+          <td>${blankValue(money(subtotal))}</td>
+        </tr>
+      `);
+
+      reportEls.rows.innerHTML = rows.join("");
+      reportEls.subtotal.innerHTML = blankValue(money(subtotal));
+      reportEls.range.innerHTML = blankValue(`${money(lowTotal)} - ${money(highTotal)}`);
+      reportEls.status.textContent = reportState.populated ? "Live populated template" : "Template shell ready";
+    }
+
+    function setProject(projectKey) {
+      reportState.project = projectKey;
+      initRanges(projectKey);
+      reportEls.projectTabs.forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.project === projectKey);
+      });
+      renderSectionControls();
+      renderReport();
+    }
+
+    reportEls.projectTabs.forEach((tab) => {
+      tab.addEventListener("click", () => setProject(tab.dataset.project));
+    });
+    reportEls.populateToggle.addEventListener("click", () => {
+      reportState.populated = !reportState.populated;
+      renderReport();
+    });
+
+    setProject(reportState.project);
   </script>
 </body>
 </html>

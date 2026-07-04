@@ -5,22 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cost Data And Formulas</title>
   <link rel="stylesheet" href="assets/site.css">
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#fff5f3",
-        primaryTextColor: "#111111",
-        primaryBorderColor: "#d94b3f",
-        lineColor: "#a93630",
-        secondaryColor: "#ffffff",
-        tertiaryColor: "#f4f0ed",
-        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
-      }
-    });
-  </script>
 </head>
 <body>
   <header class="topbar">
@@ -48,19 +32,37 @@
       <div class="rule"></div>
       <p class="lead">Excel files, worksheets, schedules, formulas, and estimate workbooks show how MARPA already thinks about quantities, categories, pricing, margin, and project cost. We preserve that logic instead of flattening it into anonymous rows.</p>
 
-      <div class="mermaid-card">
-        <h3>Workbook evidence flow</h3>
-        <pre class="mermaid">
-flowchart LR
-  XLSX["XLSX / Numbers / CSV\nproject estimates • profit calculations • plant schedules"] --> SHEETS["Sheets + named ranges\nline items • categories • totals"]
-  SHEETS --> FORMULAS["Formula extraction\nquantity × rate • markup • margin • contingency"]
-  SHEETS --> VALUES["Observed values\nhistorical costs • bids • allowances"]
-  FORMULAS --> MODEL["MARPA cost model\nbusiness logic + units"]
-  VALUES --> MODEL
-  MODEL --> OBJECTS["Design object link\nhardscape • plant • wall • material"]
-  OBJECTS --> IFC["IFC property sets\nquantity + cost classification"]
-  OBJECTS --> DASH["Scenario analysis\nMarimo dashboards + estimates"]
-        </pre>
+      <div class="big-diagram">
+        <div class="big-node red">
+          <h3>XLSX / Numbers / CSV</h3>
+          <p>Project estimates, profit calculations, plant schedules, scope worksheets, vendor references, and historical project values.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Sheets + named ranges</h3>
+          <p>Line items, sections, categories, totals, subtotals, quantities, units, and project-specific assumptions.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-branch two">
+          <div class="big-node">
+            <h3>Formula extraction</h3>
+            <p>Quantity x rate, markup, margin, contingency, allowances, and calculated estimate totals.</p>
+          </div>
+          <div class="big-node">
+            <h3>Observed values</h3>
+            <p>Historical costs, budget numbers, bid references, unit prices, and actual MARPA workbook language.</p>
+          </div>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>MARPA cost model</h3>
+          <p>Business logic and units are preserved, then connected to design objects like hardscape, plant, wall, material, zone, and phase.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node dark">
+          <h3>Live scenario analysis</h3>
+          <p>Marimo dashboards and branded report templates can update estimates, ranges, and document values from the same normalized cost logic.</p>
+        </div>
       </div>
     </section>
 

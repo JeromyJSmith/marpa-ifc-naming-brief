@@ -5,22 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Why IFC Data Matters</title>
   <link rel="stylesheet" href="assets/site.css">
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#fff5f3",
-        primaryTextColor: "#111111",
-        primaryBorderColor: "#d94b3f",
-        lineColor: "#a93630",
-        secondaryColor: "#ffffff",
-        tertiaryColor: "#f4f0ed",
-        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
-      }
-    });
-  </script>
 </head>
 <body>
   <header class="topbar">
@@ -72,43 +56,74 @@
       </div>
     </section>
 
-    <section class="page compact-page">
-      <div class="mermaid-card">
-        <h3>Before and after</h3>
-        <pre class="mermaid">
-flowchart LR
-  subgraph Before["Before enrichment"]
-    A["PDF labels"] --- B["DWG/DXF linework"]
-    B --- C["Worksheets"]
-    C --- D["Partial IFC export"]
-    D --- E["Manual cost reasoning"]
-  end
+    <section class="page diagram-page">
+      <div class="kicker">Before and after</div>
+      <h1>Enrichment turns scattered exports into usable project intelligence</h1>
+      <p class="lead">The old state is not one bad file. It is a fragmented evidence picture. The new state gives every important design object a stable identity that can carry geometry, quantity, classification, source evidence, and cost meaning.</p>
 
-  subgraph After["After MARPA naming + IFC enrichment"]
-    F["Stable MARPA object id"] --> G["IFC entity + property sets"]
-    G --> H["Quantity takeoff fields"]
-    H --> I["Cost code + pricing source"]
-    I --> J["3D review + estimate scenarios"]
-    J --> K["Vectorworks import / writeback"]
-  end
+      <div class="big-diagram">
+        <div class="big-node dark">
+          <h3>Before enrichment</h3>
+          <p>PDF labels, DWG/DXF linework, worksheets, and partial IFC exports all describe parts of the project, but no single object carries the full business meaning.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Extract every useful evidence format</h3>
+          <p>Capture Vectorworks names, classes, layers, records, sheet information, worksheet rows, PDF text, PDF vector paths, image assets, DWG/DXF geometry, and IFC variants.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Build the MARPA naming bridge</h3>
+          <p>Connect Vectorworks source language to MARPA canonical objects, IFC entities and property sets, and cost / quantity / takeoff taxonomy.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node red">
+          <h3>After MARPA naming + IFC enrichment</h3>
+          <p>Stable MARPA object ids connect to enriched IFC entities, quantity takeoff fields, cost codes, pricing sources, 3D review, predictive pricing, and Vectorworks import.</p>
+        </div>
+      </div>
+    </section>
 
-  E --> F
-        </pre>
+    <section class="page diagram-page">
+      <div class="kicker">Vectorworks return package</div>
+      <h1>What Vectorworks gets back is more useful than the export it started with</h1>
+      <p class="lead">The system does not just read Vectorworks. It sends back a better-structured project state so future schedules, worksheets, object search, and cost analysis have more to work with.</p>
+
+      <div class="big-diagram">
+        <div class="big-node red">
+          <h3>MARPA naming schema</h3>
+          <p>Source names, classes, layers, records, and worksheet names are mapped into a consistent project object model.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>JSON / Pydantic evidence package</h3>
+          <p>The extracted package records design layers, sheet layers, PDF text spans, vector paths, image assets, object candidates, quantity evidence, and extraction receipts.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Enriched IFC</h3>
+          <p>IFC entities and property sets carry object identity, geometry, coordinates, classification, quantities, source references, and cost-accounting fields.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node dark">
+          <h3>Vectorworks import</h3>
+          <p>Vectorworks receives design objects that are easier to search, schedule, estimate, visualize, compare, and reuse across future projects.</p>
+        </div>
       </div>
 
-      <div class="mermaid-card">
-        <h3>What Vectorworks gets back</h3>
-        <pre class="mermaid">
-flowchart TB
-  NAME["MARPA naming schema"] --> JSON["JSON / Pydantic evidence package"]
-  JSON --> IFC["Enriched IFC\nentities + property sets + quantities"]
-  IFC --> VW["Vectorworks import"]
-  VW --> USE1["better object search"]
-  VW --> USE2["clearer schedules"]
-  VW --> USE3["more useful worksheets"]
-  VW --> USE4["repeatable cost analysis"]
-  VW --> USE5["project-to-project learning"]
-        </pre>
+      <div class="big-branch">
+        <div class="big-node">
+          <h3>Better object search</h3>
+          <p>Find objects by MARPA id, IFC class, material, area, phase, source layer, or estimate category.</p>
+        </div>
+        <div class="big-node">
+          <h3>Clearer schedules</h3>
+          <p>Schedules can pull consistent names, quantities, units, classes, and references instead of disconnected manual labels.</p>
+        </div>
+        <div class="big-node">
+          <h3>Repeatable cost analysis</h3>
+          <p>Each estimate can learn from prior objects, prior quantities, and prior project outcomes.</p>
+        </div>
       </div>
     </section>
   </main>

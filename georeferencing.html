@@ -5,28 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Georeferencing And Project Coordinates</title>
   <link rel="stylesheet" href="assets/site.css">
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      flowchart: {
-        nodeSpacing: 48,
-        rankSpacing: 54,
-        curve: "basis"
-      },
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#fff5f3",
-        primaryTextColor: "#111111",
-        primaryBorderColor: "#d94b3f",
-        lineColor: "#a93630",
-        secondaryColor: "#ffffff",
-        tertiaryColor: "#f4f0ed",
-        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif",
-        fontSize: "22px"
-      }
-    });
-  </script>
 </head>
 <body>
   <header class="topbar">
@@ -88,20 +66,37 @@
       <div class="rule"></div>
       <p class="lead">The goal is not to make Vectorworks more complicated. The goal is to make every downstream file line up so MARPA can automate takeoff, enrichment, pricing, review, and writeback.</p>
 
-      <div class="mermaid-card">
-        <h3>What georeferencing enables</h3>
-        <pre class="mermaid">
-flowchart TB
-  GEO["Project origin + coordinate system\nunits • rotation • elevation • site reference"]
-  GEO --> ALIGN["Export alignment\nPDF • DWG/DXF • IFC • images • worksheets"]
-  ALIGN --> OBJECTS["Object reconstruction\nhardscape • plants • walls • materials"]
-  OBJECTS --> QTO["Quantity takeoff\narea • length • count • volume • zone"]
-  OBJECTS --> IFC["IFC enrichment\nentities • property sets • spatial context"]
-  QTO --> COST["Cost prediction\nlocation factors • risk • phase • scenario"]
-  IFC --> VIEW["3D / map / dashboard review\ncost-aware digital twin"]
-  COST --> VIEW
-  VIEW --> WRITEBACK["Vectorworks import\nbetter objects for the next project"]
-        </pre>
+      <div class="big-diagram">
+        <div class="big-node red">
+          <h3>Project origin + coordinate system</h3>
+          <p>Units, rotation, elevation, site reference, and project origin become the shared spatial anchor.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Export alignment</h3>
+          <p>PDF sheets, DWG/DXF geometry, IFC exports, rendered images, worksheets, and design-layer evidence can line up against the same coordinate frame.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node">
+          <h3>Object reconstruction</h3>
+          <p>Hardscapes, plants, walls, materials, and plan objects can be rebuilt as spatial design objects instead of isolated drawing marks.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-branch two">
+          <div class="big-node">
+            <h3>Quantity takeoff</h3>
+            <p>Area, length, count, volume, zone, slope, phase, and location can be calculated from aligned geometry.</p>
+          </div>
+          <div class="big-node">
+            <h3>IFC enrichment</h3>
+            <p>Entities and property sets carry spatial context, source evidence, object identity, and cost-relevant quantities.</p>
+          </div>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node dark">
+          <h3>Cost-aware digital twin</h3>
+          <p>3D review, map review, dashboard review, predictive cost analysis, and Vectorworks import all work from the same spatial project state.</p>
+        </div>
       </div>
 
       <div class="outcome">
