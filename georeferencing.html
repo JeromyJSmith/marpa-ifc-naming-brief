@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Georeferencing And Project Coordinates</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      flowchart: {
+        nodeSpacing: 48,
+        rankSpacing: 54,
+        curve: "basis"
+      },
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#fff5f3",
+        primaryTextColor: "#111111",
+        primaryBorderColor: "#d94b3f",
+        lineColor: "#a93630",
+        secondaryColor: "#ffffff",
+        tertiaryColor: "#f4f0ed",
+        fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif",
+        fontSize: "22px"
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
+      <div class="nav-links">
+        <a href="naming-bridge.html">Naming Bridge</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="diagrams.html">Diagrams</a>
+        <a href="ifc-value.html">IFC Value</a>
+        <a href="georeferencing.html">Georef</a>
+        <a href="cost-formulas.html">Cost Data</a>
+        <a href="predictive-pricing.html">Live Pricing</a>
+        <a href="evidence-harvest.html">Evidence Harvest</a>
+        <a href="process.html">Process</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Project coordinates</div>
+      <h1>Without georeferencing, the project loses its real-world position</h1>
+      <div class="rule"></div>
+      <p class="lead">A project origin, Cartesian coordinate system, and site georeference are not just survey details. They are what let design geometry line up with real space, other exports, maps, measurements, and future projects.</p>
+
+      <div class="compare">
+        <div class="compare-panel blocked">
+          <h2>Without project coordinates</h2>
+          <ul>
+            <li>DWG/DXF, PDF, image, IFC, and worksheet evidence cannot be reliably aligned.</li>
+            <li>2D hardscapes and plant symbols are harder to turn into accurate 3D objects.</li>
+            <li>Measurements can drift between sheets, design layers, and exported files.</li>
+            <li>Drone, LiDAR, GIS, survey, property, and site imagery cannot snap into the same model.</li>
+            <li>Quantity takeoff has weaker source confidence because geometry cannot prove where it sits.</li>
+            <li>Vectorworks writeback becomes less useful because enriched objects have no shared spatial anchor.</li>
+          </ul>
+        </div>
+
+        <div class="compare-panel enabled">
+          <h2>With project coordinates</h2>
+          <ul>
+            <li>Every export can share the same project origin, units, scale, rotation, and coordinate reference.</li>
+            <li>PDF, DWG/DXF, IFC, worksheet, image, and 3D evidence can be compared object-by-object.</li>
+            <li>Hardscapes, walls, planting beds, trees, and materials can be enriched into spatial BIM objects.</li>
+            <li>Cost analysis can group quantities by real location, phase, area, slope, exposure, or zone.</li>
+            <li>3D viewers and dashboards can show cost, scope, and risk on the actual site model.</li>
+            <li>Enriched IFC can import back into Vectorworks with object identity and spatial context intact.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page diagram-page">
+      <img class="brand-small" src="assets/marpa-mark.png" alt="MARPA mark">
+      <div class="kicker">Downstream impact</div>
+      <h1>Georeferencing turns exported drawings into a reusable project model</h1>
+      <div class="rule"></div>
+      <p class="lead">The goal is not to make Vectorworks more complicated. The goal is to make every downstream file line up so MARPA can automate takeoff, enrichment, pricing, review, and writeback.</p>
+
+      <div class="mermaid-card">
+        <h3>What georeferencing enables</h3>
+        <pre class="mermaid">
+flowchart TB
+  GEO["Project origin + coordinate system\nunits • rotation • elevation • site reference"]
+  GEO --> ALIGN["Export alignment\nPDF • DWG/DXF • IFC • images • worksheets"]
+  ALIGN --> OBJECTS["Object reconstruction\nhardscape • plants • walls • materials"]
+  OBJECTS --> QTO["Quantity takeoff\narea • length • count • volume • zone"]
+  OBJECTS --> IFC["IFC enrichment\nentities • property sets • spatial context"]
+  QTO --> COST["Cost prediction\nlocation factors • risk • phase • scenario"]
+  IFC --> VIEW["3D / map / dashboard review\ncost-aware digital twin"]
+  COST --> VIEW
+  VIEW --> WRITEBACK["Vectorworks import\nbetter objects for the next project"]
+        </pre>
+      </div>
+
+      <div class="outcome">
+        Georeferencing makes the project reusable:
+        <span>source evidence</span>
+        ↔
+        <span>spatial BIM</span>
+        ↔
+        <span>quantity takeoff</span>
+        ↔
+        <span>predictive cost analysis</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
