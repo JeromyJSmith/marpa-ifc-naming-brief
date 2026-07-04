@@ -41,32 +41,31 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .nav {
-  min-height: 68px;
+  min-height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 28px;
+  overflow: hidden;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  flex: 0 0 auto;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 17px;
-  white-space: nowrap;
+  padding: 10px 0;
 }
 
 .nav-brand img {
-  width: 34px;
-  height: 34px;
+  width: 168px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -74,8 +73,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 6px;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
   scrollbar-width: none;
 }
 
@@ -84,18 +87,38 @@ a {
 }
 
 .nav-links a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 8px 10px;
+  font-weight: 850;
+  font-size: 15px;
+  padding: 0 16px;
   border-radius: 999px;
-  white-space: nowrap;
-  color: #383331;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.04);
+}
+
+.nav-links a:first-child {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #ffffff;
+}
+
+.nav-links a:nth-child(5),
+.nav-links a:nth-child(6) {
+  background: var(--marpa-red);
+  border-color: var(--marpa-red);
+  color: #ffffff;
 }
 
 .nav-links a:hover {
-  background: var(--soft);
-  color: var(--ink);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(17, 17, 17, 0.08);
 }
 
 .page {
@@ -1511,14 +1534,18 @@ input[type="range"] {
   }
 
   .nav {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 12px 0;
+    min-height: auto;
+    gap: 14px;
+    padding: 12px 0 14px;
   }
 
   .nav-links {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .nav-brand img {
+    width: 138px;
   }
 
   .home-hero {
@@ -1583,5 +1610,12 @@ input[type="range"] {
 
   .pipe-step {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
