@@ -571,6 +571,83 @@ p {
   margin-top: 30px;
 }
 
+.georef-reading-page {
+  min-height: auto;
+}
+
+.georef-reading-page h1 {
+  max-width: 1180px;
+}
+
+.georef-benefit-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.georef-readable-card {
+  padding: clamp(30px, 3.6vw, 52px);
+}
+
+.georef-readable-card h3 {
+  font-size: clamp(34px, 4.2vw, 62px);
+  margin-bottom: 16px;
+}
+
+.georef-readable-card p {
+  max-width: 1180px;
+  font-size: clamp(26px, 2.8vw, 42px);
+  line-height: 1.18;
+}
+
+.georef-check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.georef-check-card {
+  background: #ffffff;
+  border: 2px solid var(--line);
+  border-left: 10px solid var(--marpa-red);
+  border-radius: 18px;
+  padding: 24px 28px;
+}
+
+.georef-check-card strong {
+  display: block;
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.georef-check-card p {
+  font-size: clamp(21px, 2vw, 29px);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.source-links a {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
 .evidence-stack {
   display: grid;
   gap: 22px;
@@ -1152,6 +1229,7 @@ input[type="range"] {
   .doc-grid,
   .big-branch,
   .big-branch.two,
+  .georef-check-grid,
   .evidence-body,
   .dependency {
     grid-template-columns: 1fr;

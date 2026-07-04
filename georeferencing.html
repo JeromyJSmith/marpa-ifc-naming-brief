@@ -31,30 +31,83 @@
       <h1>Without georeferencing, the project loses its real-world position</h1>
       <div class="rule"></div>
       <p class="lead">A project origin, Cartesian coordinate system, and site georeference are not just survey details. They are what let design geometry line up with real space, other exports, maps, measurements, and future projects.</p>
+    </section>
 
-      <div class="compare">
-        <div class="compare-panel blocked">
-          <h2>Without project coordinates</h2>
-          <ul>
-            <li>DWG/DXF, PDF, image, IFC, and worksheet evidence cannot be reliably aligned.</li>
-            <li>2D hardscapes and plant symbols are harder to turn into accurate 3D objects.</li>
-            <li>Measurements can drift between sheets, design layers, and exported files.</li>
-            <li>Drone, LiDAR, GIS, survey, property, and site imagery cannot snap into the same model.</li>
-            <li>Quantity takeoff has weaker source confidence because geometry cannot prove where it sits.</li>
-            <li>Vectorworks writeback becomes less useful because enriched objects have no shared spatial anchor.</li>
-          </ul>
+    <section class="page georef-reading-page">
+      <div class="kicker">Design value</div>
+      <h1>Location makes the model useful before estimating even starts</h1>
+      <div class="georef-benefit-grid">
+        <div class="big-node red georef-readable-card">
+          <h3>Seasonal shadow studies</h3>
+          <p>With true project location, north, date, and time, Vectorworks can simulate sunlight and shadows across seasons. That helps MARPA see shade, heat, comfort, plant performance, view impacts, and solar exposure while the design is still moving.</p>
         </div>
+        <div class="big-node georef-readable-card">
+          <h3>3D planting decisions</h3>
+          <p>If trees and plants become 3D objects, they can cast shadows, show mature canopy, reveal spatial conflicts, and connect plant identity to cost, risk, maintenance, and site performance.</p>
+        </div>
+        <div class="big-node dark georef-readable-card">
+          <h3>Project liability context</h3>
+          <p>If the project does not know where it is on earth, it cannot reliably know its wildfire area, municipal rules, setbacks, slope behavior, climate exposure, or site-specific design constraints.</p>
+        </div>
+      </div>
+    </section>
 
-        <div class="compare-panel enabled">
-          <h2>With project coordinates</h2>
-          <ul>
-            <li>Every export can share the same project origin, units, scale, rotation, and coordinate reference.</li>
-            <li>PDF, DWG/DXF, IFC, worksheet, image, and 3D evidence can be compared object-by-object.</li>
-            <li>Hardscapes, walls, planting beds, trees, and materials can be enriched into spatial BIM objects.</li>
-            <li>Cost analysis can group quantities by real location, phase, area, slope, exposure, or zone.</li>
-            <li>3D viewers and dashboards can show cost, scope, and risk on the actual site model.</li>
-            <li>Enriched IFC can import back into Vectorworks with object identity and spatial context intact.</li>
-          </ul>
+    <section class="page georef-reading-page">
+      <div class="kicker">Colorado wildfire context</div>
+      <h1>Georeferencing turns code changes into spatial design checks</h1>
+      <p class="lead">The July 1, 2026 shift matters because Colorado jurisdictions are implementing wildfire-resiliency requirements around WUI mapping, defensible space, structure hardening, and local plant restrictions. A project needs location before the system can know which rules apply.</p>
+
+      <div class="big-diagram">
+        <div class="big-node red georef-readable-card">
+          <h3>Find the jurisdiction and wildfire area</h3>
+          <p>Latitude, longitude, parcel, address, and project boundary determine whether the site sits inside a mapped wildfire area and which local code language applies.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node georef-readable-card">
+          <h3>Create structure ignition zones</h3>
+          <p>Generate 0-5 ft, 5-30 ft, and 30-100 ft zones around buildings, decks, stairs, attachments, detached structures, fences, and retaining walls.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node georef-readable-card">
+          <h3>Check plants, materials, and distances</h3>
+          <p>Flag combustible mulch, trees, shrubs, juniper, arborvitae, Gambel oak, fences, retaining walls, firewood, and other materials when local rules make location or distance important.</p>
+        </div>
+        <div class="big-arrow">↓</div>
+        <div class="big-node dark georef-readable-card">
+          <h3>Show the issue in the model</h3>
+          <p>Highlight the object, show the distance, name the source rule, and let the designer adjust the layout while preserving the design intent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page georef-reading-page">
+      <div class="kicker">What the pipeline can flag</div>
+      <h1>These checks only work when the project has coordinates and 3D objects</h1>
+
+      <div class="georef-check-grid">
+        <div class="georef-check-card">
+          <strong>0-5 ft immediate zone</strong>
+          <p>Noncombustible hard surface materials, no new trees, plantings and combustible mulch checked against the building perimeter.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>5-30 ft intermediate zone</strong>
+          <p>Tree crowns, shrub groups, dead material, combustible accumulations, firewood, and species restrictions checked by distance.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>30-100 ft extended zone</strong>
+          <p>Tree spacing, slope, canopy continuity, and fuel behavior reviewed against site conditions.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>Plant species awareness</strong>
+          <p>MARPA plant names can connect to botanical names, local restrictions, flammability guidance, cost, size, and mature geometry.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>Shadow and canopy impact</strong>
+          <p>Seasonal sun studies can show where trees, walls, buildings, and structures shade patios, plant beds, windows, turf, and outdoor rooms.</p>
+        </div>
+        <div class="georef-check-card">
+          <strong>Collision and clash review</strong>
+          <p>Objects can be checked against structures, roofs, chimneys, utilities, property lines, easements, access paths, and design zones.</p>
         </div>
       </div>
     </section>
@@ -108,6 +161,45 @@
         <span>quantity takeoff</span>
         ↔
         <span>predictive cost analysis</span>
+      </div>
+    </section>
+
+    <section class="page compact-page">
+      <div class="kicker">Research notes</div>
+      <h2>Why this matters now</h2>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Finding</th>
+            <th>Why georeferencing helps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vectorworks solar studies use location, date, time, and north orientation to show sunlight and shadows.</td>
+            <td>The project needs true position and orientation for reliable seasonal shadow simulation.</td>
+          </tr>
+          <tr>
+            <td>Colorado wildfire guidance organizes defensible space around structures into 0-5 ft, 5-30 ft, and 30-100 ft zones.</td>
+            <td>Those zones are geometry problems: draw buffers around structures, then test objects and materials inside them.</td>
+          </tr>
+          <tr>
+            <td>Jefferson County's Wildfire Resiliency Code is effective July 1, 2026 for permits on or after that date, and includes specific site requirements.</td>
+            <td>The system can map a project to jurisdiction, date, WUI area, and applicable local code language.</td>
+          </tr>
+          <tr>
+            <td>Local jurisdictions can name prohibited or discouraged plants. Jefferson County lists juniper species, arborvitae, and Gambel oak; Louisville prohibits new juniper plantings; Boulder recommends removing junipers.</td>
+            <td>Plant objects need botanical identity and location so the model can show possible conflicts before plans are finalized.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="source-links">
+        <a href="https://app-help.vectorworks.net/2026/eng/VW2026_Guide/SolarStudies/Solar_studies.htm">Vectorworks solar studies</a>
+        <a href="https://csfs.colostate.edu/wildfire-mitigation/protect-your-home-property-from-wildfire/">Colorado State Forest Service defensible space zones</a>
+        <a href="https://www.jeffco.us/DocumentCenter/View/57852/Jefferson-County-Colorado-Wildfire-Resiliency-Code-PDF?bidId=">Jefferson County Wildfire Resiliency Code</a>
+        <a href="https://content.govdelivery.com/accounts/COLOUISVILLE/bulletins/40585ee">Louisville juniper planting notice</a>
+        <a href="https://bouldercolorado.gov/wildfire-resilient-landscapes-guide">Boulder wildfire resilient landscapes guide</a>
       </div>
     </section>
   </main>
