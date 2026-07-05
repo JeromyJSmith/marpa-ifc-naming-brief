@@ -3,111 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MARPA Pipeline Progress Docs</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <title>MARPA Graftkit Stakeholder Brief</title>
+  <link rel="stylesheet" href="assets/graftkit-site.css">
 </head>
 <body>
-  <header class="topbar">
-    <nav class="shell nav">
-      <a class="nav-brand" href="index.html"><img src="assets/marpa-mark.png" alt=""> MARPA Progress Docs</a>
-      <div class="nav-links">
-        <a href="naming-bridge.html">Naming Bridge</a>
-        <a href="pipeline.html">Pipeline</a>
-        <a href="diagrams.html">Diagrams</a>
-        <a href="ifc-value.html">IFC Value</a>
-        <a href="georeferencing.html">Georef</a>
-        <a href="cost-formulas.html">Cost Data</a>
-        <a href="predictive-pricing.html">Live Pricing</a>
-        <a href="evidence-harvest.html">Evidence Harvest</a>
-        <a href="process.html">Process</a>
+  <main>
+    <section class="hero wrap">
+      <div class="brand">
+        <img src="assets/marpa-mark.png" alt="MARPA mark">
+        <div class="brand-text">
+          <div class="brand-title">MARPA Graftkit</div>
+          <div class="brand-subtitle">Stakeholder process brief</div>
+        </div>
       </div>
-    </nav>
-  </header>
-
-  <main class="shell">
-    <section class="page">
-      <img class="brand" src="assets/marpa-logo.png" alt="MARPA logo">
-      <div class="kicker">Working progress package</div>
-      <h1>MARPA Vectorworks, IFC, and cost pipeline docs</h1>
-      <div class="rule"></div>
-      <p class="lead">This site explains the current process in plain language: how we preserve MARPA and Vectorworks naming, extract every useful project format, normalize the evidence, and turn it into IFC, quantity, and cost-ready data.</p>
-      <div class="button-row">
-        <a class="button" href="naming-bridge.html">View naming bridge</a>
-        <a class="button secondary" href="pipeline.html">View pipeline diagram</a>
-        <a class="button secondary" href="diagrams.html">View large diagrams</a>
-        <a class="button secondary" href="ifc-value.html">Why IFC matters</a>
-        <a class="button secondary" href="georeferencing.html">Why georeferencing matters</a>
-        <a class="button secondary" href="predictive-pricing.html">Try live pricing</a>
-        <a class="button secondary" href="original-progress-memo.html">Open original memo</a>
-        <a class="button secondary" href="marpa-ifc-naming-progress-memo.pdf">Download PDF memo</a>
-      </div>
-    </section>
-
-    <section class="page compact-page">
-      <div class="kicker">What MARPA can review</div>
-      <h2>Four simple documents</h2>
-      <div class="grid-2">
-        <a class="card dark" href="naming-bridge.html">
-          <h3>Naming Bridge</h3>
-          <p>Vectorworks names/classes/layers/records move into a MARPA canonical model, then map to IFC and cost concepts.</p>
-        </a>
-        <a class="card" href="pipeline.html">
-          <h3>Pipeline Diagram</h3>
-          <p>The end-to-end path from a single design state through exports, evidence packages, classification, IFC enrichment, and review.</p>
-        </a>
-        <a class="card dark" href="diagrams.html">
-          <h3>Large Pipeline Diagrams</h3>
-          <p>Architecture, evidence-package, naming-bridge, and parallel-lane diagrams for explaining the data pipeline design.</p>
-        </a>
-        <a class="card" href="ifc-value.html">
-          <h3>Why IFC Matters</h3>
-          <p>A before/after view showing what downstream work is limited without structured IFC data and what becomes possible with it.</p>
-        </a>
-        <a class="card dark" href="georeferencing.html">
-          <h3>Georeferencing</h3>
-          <p>Why project origin, Cartesian coordinates, and site reference matter for alignment, 3D enrichment, takeoff, cost analysis, and writeback.</p>
-        </a>
-        <a class="card" href="cost-formulas.html">
-          <h3>Cost Data And Formulas</h3>
-          <p>How XLSX, worksheet, schedule, formula, margin, quantity, and pricing evidence connect to design objects.</p>
-        </a>
-        <a class="card dark" href="predictive-pricing.html">
-          <h3>Live Pricing Model</h3>
-          <p>A small interactive demo showing how normalized data can drive report values, estimate ranges, and scenario sliders in real time.</p>
-        </a>
-        <a class="card" href="evidence-harvest.html">
-          <h3>Evidence Harvest</h3>
-          <p>What we extract from VWX, PDF, DWG/DXF, IFC, worksheets, images, symbols, plant records, and resource assets.</p>
-        </a>
-        <a class="card" href="process.html">
-          <h3>Process</h3>
-          <p>The working sequence: inventory first, compare exports, name the objects, attach quantities, then enrich IFC and cost workflows.</p>
-        </a>
-        <a class="card dark" href="original-progress-memo.html">
-          <h3>Original Progress Memo</h3>
-          <p>The first simple two-page MARPA review memo, preserved as a standalone HTML page for sharing or email drafting.</p>
-        </a>
-        <a class="card" href="marpa-ifc-naming-progress-memo.pdf">
-          <h3>PDF Memo</h3>
-          <p>A branded PDF version of the IFC naming conventions memo that can be attached directly to an email.</p>
-        </a>
+      <div class="eyebrow">Working foundation · July 2026</div>
+      <h1>Turning MARPA project evidence into governed design, cost, and review intelligence.</h1>
+      <p class="lead">Graftkit connects Vectorworks design work, BIM/IFC structure, plant and hardscape assets, financial evidence, and agent-assisted workflows into one traceable operating system.</p>
+      <nav class="nav inline-nav" aria-label="Page sections">
+        <a href="#why">Why</a>
+        <a href="#process">Process</a>
+        <a href="#lanes">Lanes</a>
+        <a href="#truth">Truth Model</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#status">Status</a>
+        <a href="legacy-progress-docs.html">Legacy IFC Brief</a>
+      </nav>
+      <div class="summary-grid">
+        <div class="card">
+          <strong>Evidence first</strong>
+          <span>Every important number, object, asset, and model output should trace back to a source file, table, receipt, or review event.</span>
+        </div>
+        <div class="card">
+          <strong>Many surfaces, one governed system</strong>
+          <span>3D presentation, BIM operations, plant assets, documentation, Vectorworks integration, and financial intelligence work together.</span>
+        </div>
+        <div class="card">
+          <strong>Automation with receipts</strong>
+          <span>Agents can help move work forward, but the system records sources, checks, and decisions instead of hiding them.</span>
+        </div>
       </div>
     </section>
 
-    <section class="page compact-page">
-      <div class="kicker">Core idea</div>
-      <h2>Same object, connected names</h2>
-      <div class="outcome">
-        Vectorworks source names
-        <span>↔</span>
-        MARPA canonical object model
-        <span>↔</span>
-        IFC entities and property sets
-        <span>↔</span>
-        cost, quantity, and takeoff taxonomy
+    <section id="why" class="section wrap">
+      <div class="panel">
+        <h2>Why Graftkit exists</h2>
+        <p>MARPA's project knowledge lives across drawings, schedules, layers, classes, worksheets, PDFs, IFC, images, plant records, resource assets, and financial history. Those sources are valuable, but they do not automatically explain each other.</p>
+        <p>Graftkit creates the governed system that connects them. It starts from real design evidence, keeps source context attached, and turns that evidence into useful review surfaces, technical BIM/GIS workflows, plant and material asset control, and financial intelligence.</p>
+        <div class="note">The goal is not another dashboard. The goal is a reliable project intelligence foundation where the team can explain where an answer came from and why it should be trusted.</div>
       </div>
-      <p class="footer-note">Prepared from the current MARPA Vectorworks / IFC pipeline planning work on 2026-07-04.</p>
+    </section>
+
+    <section id="process" class="section wrap">
+      <div class="panel">
+        <h2>Process: design state to usable intelligence</h2>
+        <p>The system preserves the design state, extracts every useful representation, builds evidence packages, normalizes project concepts, serves review surfaces, and only then writes approved information forward.</p>
+        <div class="diagram" aria-label="Process flow diagram">
+          <div class="flow">
+            <div class="step"><b>1. Design state</b><span>Vectorworks owns spatial design context, layers, classes, objects, sheets, symbols, and plant records.</span></div>
+            <div class="step"><b>2. Harvest</b><span>Gather IFC, DWG/DXF, PDFs, worksheets, schedules, images, resources, and financial files.</span></div>
+            <div class="step"><b>3. Evidence</b><span>Store source references, hashes, extraction receipts, pages, rows, layers, and object context.</span></div>
+            <div class="step"><b>4. Normalize</b><span>Create stable MARPA identities, quantities, classifications, assets, costs, and IFC candidates.</span></div>
+            <div class="step"><b>5. Review</b><span>Use BIM/GIS, 3D, Marimo, asset, finance, and documentation surfaces for human review.</span></div>
+            <div class="step"><b>6. Write forward</b><span>Publish reports, snapshots, validation packages, and future approved MCP/IFC writeback.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lanes" class="section wrap">
+      <div class="panel">
+        <h2>Six coordinated lanes</h2>
+        <p>Graftkit is one governed platform with six lanes. A lane owns a concern, not the whole truth. The lanes share manifests, source registries, contracts, receipts, and validation rules.</p>
+        <div class="lane-grid">
+          <div class="card lane"><strong>Lane 1 · 3D Rendering / Cinematic</strong><span>Geoglify, Soil Studio, Three.js/R3F, and rendering bridge pieces merge into one governed client-facing 3D application.</span></div>
+          <div class="card lane"><strong>Lane 2 · BIM / Technical Operations</strong><span>GeoLibre, OpenAEC, ifc-lite, validation, BCF, schedule, and cost workflows support working BIM/GIS operations.</span></div>
+          <div class="card lane"><strong>Lane 3 · Vectorworks Bridge</strong><span>Vectorworks SDK, scripting, MCP, document context, export control, and future writeback protect the design authority.</span></div>
+          <div class="card lane"><strong>Lane 4 · Documentation / Knowledge Base</strong><span>Stakeholder proof, specs, architecture records, runbooks, handoffs, verification reports, and knowledge graphs.</span></div>
+          <div class="card lane"><strong>Lane 5 · Asset Creation / Plant Management</strong><span>Plant and hardscape assets, reference media, GLBs, profiles, deterministic exports, and manifest-based serving.</span></div>
+          <div class="card lane"><strong>Lane 6 · Financial Intelligence</strong><span>Cost evidence, budgets, CSI classification, DuckDB snapshots, Marimo models, and future predictive estimating.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="truth" class="section wrap">
+      <div class="panel">
+        <h2>Truth model and governance</h2>
+        <p>The architecture keeps design truth, evidence truth, analytical truth, work truth, and source-code truth separate. That separation prevents one tool from quietly becoming responsible for everything.</p>
+        <div class="truth-grid">
+          <div class="card"><strong>Vectorworks</strong><span>Design and spatial truth: geometry, layers, classes, sheets, symbols, plant records, and live project context.</span></div>
+          <div class="card"><strong>Pixeltable</strong><span>Multimodal evidence and enrichment truth: source artifacts, extracted content, embeddings, receipts, and lineage.</span></div>
+          <div class="card"><strong>DuckDB / DuckLake</strong><span>Analytical serving and snapshot truth: reports, marts, model-ready data, and reproducible financial baselines.</span></div>
+          <div class="card"><strong>Marimo / AnyWidget</strong><span>Review and modeling surface: scenario controls, approvals, financial review, and data-quality inspection.</span></div>
+          <div class="card"><strong>GitHub</strong><span>Repository and project operations truth: commits, branches, pull requests, issues, checks, templates, and board state.</span></div>
+          <div class="card"><strong>opensrc</strong><span>Local source intelligence truth: cached source, docs, APIs, licenses, and adoption decisions before implementation.</span></div>
+        </div>
+        <div class="diagram" aria-label="Stacked truth model diagram">
+          <div class="stack">
+            <div class="stack-row"><div class="stack-name">Design authority</div><div class="stack-desc">Vectorworks remains the source for the design state.</div></div>
+            <div class="stack-row"><div class="stack-name">Evidence authority</div><div class="stack-desc">Pixeltable stores source artifacts, extraction outputs, enrichments, and receipts.</div></div>
+            <div class="stack-row"><div class="stack-name">Serving authority</div><div class="stack-desc">DuckDB/DuckLake publish stable analytical snapshots and model-ready tables.</div></div>
+            <div class="stack-row"><div class="stack-name">Review surfaces</div><div class="stack-desc">Marimo, BIM/GIS tools, 3D scenes, reports, and stakeholder pages make the evidence usable.</div></div>
+            <div class="stack-row"><div class="stack-name">Work authority</div><div class="stack-desc">GitHub, CI, source registries, manifests, rules, and receipts control implementation work.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="section wrap">
+      <div class="panel">
+        <h2>What stakeholders will see</h2>
+        <p>Stakeholders should experience a clearer project story: what was designed, what evidence supports it, what it costs, how it appears in BIM/IFC, and how it can be reviewed visually.</p>
+        <div class="output-grid">
+          <div class="card"><strong>Project proof packets</strong><span>Readable summaries that explain source evidence, quantities, classifications, and assumptions.</span></div>
+          <div class="card"><strong>Technical BIM/GIS review</strong><span>IFC, GeoLibre, OpenAEC, validation, issue review, and georeferenced project operations.</span></div>
+          <div class="card"><strong>Client-facing 3D review</strong><span>Cinematic, georeferenced 3D scenes connected back to project evidence and assets.</span></div>
+          <div class="card"><strong>Financial intelligence</strong><span>Cost baselines, estimate ranges, scenario modeling, and future prediction grounded in real data.</span></div>
+          <div class="card"><strong>Plant and asset authority</strong><span>Managed plant, hardscape, material, reference media, seasonal cutouts, and 3D asset records.</span></div>
+          <div class="card"><strong>Agent work with receipts</strong><span>Multi-agent work that leaves behind source rows, validation checks, and traceable outcomes.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status" class="section wrap">
+      <div class="panel">
+        <h2>Current status and next steps</h2>
+        <p>The Graftkit foundation has moved from architecture discussion into scaffolded implementation. The immediate work is to finish specification depth, CI/policy gates, GitHub operations, and the first demonstration path.</p>
+        <div class="status"><b>Current repo</b><span><code>/Volumes/marpa-volume/graftkit/</code></span></div>
+        <div class="status"><b>Stakeholder docs</b><span><code>/Volumes/marpa-volume/DATA-PIPELINE-PLAN/reports/graftkit_stakeholder_packet/</code></span></div>
+        <div class="status"><b>HTML brief</b><span><code>/Volumes/marpa-volume/DATA-PIPELINE-PLAN/site_exports/graftkit-stakeholder-brief/</code></span></div>
+        <div class="status"><b>Next phase</b><span>Complete implementation-ready specs, populate source registry/library rows, confirm GitHub operations, define the first Gannan demo, and keep Pixeltable migration as a separate controlled phase.</span></div>
+        <div class="note">This phase does not migrate live Pixeltable data or rewrite Vectorworks files. It establishes the governed foundation that makes those later steps traceable and reviewable.</div>
+      </div>
     </section>
   </main>
+
+  <footer class="wrap footer">
+    Prepared from the current Graftkit architecture, scaffold, and MARPA data-pipeline planning work. Earlier IFC naming brief retained as <a href="legacy-progress-docs.html">legacy progress docs</a>.
+  </footer>
 </body>
 </html>
